@@ -25,7 +25,10 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JMenuItem;
 import static inform.MainFrame.minGraphic;
 import static inform.MainFrame.modelFrame;
+import static inform.MainFrame.samplesNumber;
+import static inform.MainFrame.samplingRate;
 import static inform.MainFrame.streamArray2;
+import static inform.MainFrame.timeMaxGraphic;
 import static inform.MainFrame.timeMaxGraphicArray;
 import static inform.MaxGraphics.MaxGraphQueue;
 import static inform.MaxGraphics.MaxSlider;
@@ -45,8 +48,8 @@ public class MinGraphics extends javax.swing.JInternalFrame implements MouseList
     public static int border2X = 1;
     public static int borderY = 1;
 
-    public static int borderProp1X = 1;
-    public static int borderProp2X = 99;
+    public static int borderProp1X = 0;
+    public static int borderProp2X = 100;
     
     int topPadding = 31;
 
@@ -412,21 +415,27 @@ public class MinGraphics extends javax.swing.JInternalFrame implements MouseList
             g.setColor(Color.BLACK);
             
             
-            //функция на вход принимает кол-во частей (значений), на которое нужно поделить время
-            calculateTime(5);
+
             
             g.drawString(String.valueOf(Math.round(y11)), 30, x11 + fontPadding + 5);
             g.drawString(String.valueOf(Math.round(y44)), 30, x44 + fontPadding);
             g.drawString(String.valueOf(Math.round(y33)), 30, x33 + fontPadding);
             g.drawString(String.valueOf(Math.round(y55)), 30, x55 + fontPadding);
             g.drawString(String.valueOf(Math.round(y22)), 30, x22);
+
+            long maxTimeDiffer = (long) ((1 / Double.parseDouble(samplingRate) *  Double.parseDouble(samplesNumber)) * 1000);
+            long minTimeDiffer = (long) ((1 / Double.parseDouble(samplingRate) *  Double.parseDouble(samplesNumber)) * 1000);
+            maxTimeDiffer = (maxTimeDiffer * borderProp2X) / 100;
+            minTimeDiffer = (maxTimeDiffer * borderProp1X) / 100;
+            long td2 = (maxTimeDiffer + minTimeDiffer) / 2;
+            long td1 = (td2 + minTimeDiffer) / 2;
+            long td3 = (td2 + maxTimeDiffer) / 2;
             
-            
-            g.drawString((String) timeMaxGraphicArray.get(0), c11, z22 + fontPadding);
-            g.drawString((String) timeMaxGraphicArray.get(1), c44, z22 + fontPadding);
-            g.drawString((String) timeMaxGraphicArray.get(2), c33, z22 + fontPadding);
-            g.drawString((String) timeMaxGraphicArray.get(3), c55, z22 + fontPadding);
-            g.drawString((String) timeMaxGraphicArray.get(4), c22, z22 + fontPadding);
+            g.drawString(calculateTime(minTimeDiffer), c11, z22 + fontPadding);
+            g.drawString(calculateTime(td1), c44, z22 + fontPadding);
+            g.drawString(calculateTime(td2), c33, z22 + fontPadding);
+            g.drawString(calculateTime(td3), c55, z22 + fontPadding);
+            g.drawString(calculateTime(maxTimeDiffer), c22, z22 + fontPadding);
             
         }
     }

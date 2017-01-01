@@ -282,75 +282,30 @@ public class MainFrame extends javax.swing.JFrame {
 
     //рассчитывает значения временной шкалы на MaxGraphics
     @SuppressWarnings("unchecked")
-    public static void calculateTime(int count){
-        
-        SimpleDateFormat format3 = new SimpleDateFormat("dd.MM.yyyy");
-        
-        DateTimeFormatter germanFormatter = DateTimeFormatter.ofLocalizedDate(
-        FormatStyle.MEDIUM).withLocale(Locale.GERMAN);
-        
-        //это длительность в миллисекундах
-        timeMaxGraphic = ((long) (1 / Double.parseDouble(samplingRate) *  Double.parseDouble(samplesNumber)) * 1000);
+    public static String calculateTime(long time){
         //подгоняем дату+время начала под формат
         startDate = startDate.replace("-", ".");
         String dateForFormat =  startDate + " " + startTime;
+        
         //вот и формат, собственно
-        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy H:mm");                  
+        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy H:mm");  
+
         try {
             //переводим дату в формат date
             date = format.parse(dateForFormat);
-        } catch (ParseException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        //очищаем массив с значениями временной шкалы
-        timeMaxGraphicArray.clear();
-        
-        try {
-            Date dateStart = format3.parse(dateForFormat);
-        } catch (ParseException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        LocalDate date1 = LocalDate.parse(startDate,  germanFormatter);
-        
-        long endDate = date.getTime() + timeMaxGraphic;
-        
-        cal.setTimeInMillis( endDate);
-        
-        
-        
-        
-        LocalDate date2 = LocalDate.parse(format3.format(cal.getTime()), germanFormatter);
-      
-        
-        SimpleDateFormat format2 = new SimpleDateFormat("H:mm");
-        
-        long days = ChronoUnit.DAYS.between(date1, date2);
-//        System.out.println("days _________" + days);
-        
-        long daysArray = 0;
-        boolean addDays = false;
-        if(days != 0) {
-            addDays = true;
-        }
-        for (int i = 0; i <= count-1; i++) {
-            //очищаем объект календарь
-            cal.clear();
-            //присваеваем значение в миллисекундах
-            //почему count-1? Потому что первое значение должно быть датой+временем начала
-            //а последнее датой+временем конца
-            cal.setTimeInMillis(date.getTime()+((timeMaxGraphic / (count-1) )*i));
-            daysArray = ((days / (count-1) )*i);
-            if (addDays == false) {
-                timeMaxGraphicArray.add(i, format2.format(cal.getTime()));
-            } else {
-                timeMaxGraphicArray.add(i, daysArray + "д. " + format2.format(cal.getTime()));
-            }
             
-            //System.out.println(timeMaxGraphicArray.get(i).toString());
-        }
+        } catch (ParseException ex) {}
         
+        SimpleDateFormat format2 = new SimpleDateFormat("H:mm:ss");
         
+        cal.clear();
+
+        //cal.setTimeInMillis(danilapidor);
+        cal.setTimeInMillis(date.getTime() + time);
+        //cal.setTimeInMillis(date.getTime());
+        //System.out.println(date.getTime());
+
+        return format2.format(cal.getTime());
         
     }
  

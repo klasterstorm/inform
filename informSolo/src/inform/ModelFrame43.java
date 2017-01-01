@@ -34,7 +34,7 @@ public class ModelFrame43 extends javax.swing.JFrame {
 
     }
     
-    public float intImpuls = 0;
+    public double intImpuls = 0;
     public double maxSamples = 0;
     public int modelFrameWidth;
     public int modelFrameHeight;
@@ -49,7 +49,7 @@ public class ModelFrame43 extends javax.swing.JFrame {
         g.drawRect(60, 81, modelFrameWidth - 320, modelFrameHeight - 141);
     }
     
-    public void Line(Graphics g,int max1,int min1, int max2, int min2){
+    public void Line(Graphics g,int max1,int min1, double max2, double min2){
         
         //Полоски вертикальные
         g.setColor(Color.LIGHT_GRAY);
@@ -131,16 +131,21 @@ public class ModelFrame43 extends javax.swing.JFrame {
         double y1 = maxHeight + minHeight;
         double x2 = 60;
         double y2 = maxHeight + minHeight;
+        double diffXY = maxHeight - minHeight;
         int ggendI = (int) (gendI - 1);
         //System.out.println(gstartI + " !========================================! " + gendI);
         int xuy = (int) (ggendI - gstartI);
         
+        boolean firstValue = false;
+        double maxValue = 0;
+        double minValue = 0;
         
-        if (gstartI > 20){
+        if (gstartI > -1){
             Label1.setText((int)gstartI + " < " + "x" + " < " + ggendI);
             
-            Line(g, (int) gstartI,ggendI,1,0);
+
             //int count = intImpuls;
+
             for(int i = (int) gstartI; i < ggendI; i++){
 
                 x2 = Math.ceil(((width / xuy) * (i - gstartI)) + minWidth);
@@ -155,17 +160,36 @@ public class ModelFrame43 extends javax.swing.JFrame {
                 }
 
                 //y2 = minHeight;
-                double pidor = 0.2;
-                double asdfg = Math.pow(pidor, i);
-                
 
-                System.out.println(pidor + " в степени " + i + " = " + asdfg);
+                //double asdfg = Math.pow(pidor, i);
+                
+                if (firstValue == false){
+                    maxValue = Math.pow(intImpuls, (int) gstartI);
+                    minValue = Math.pow(intImpuls, ggendI); 
+                    firstValue = true;
+                }
+                double value = Math.pow(intImpuls, i);
+                System.out.println("VALUE - " + value);
+                y2 = (((value * 100) / maxValue));
+//                if (y2 > 0){
+                    System.out.println("0 - " + y2);
+                    y2 = 100 - y2;
+                    //y2 = y2 + minHeight;
+                    y2 = ((y2 * maxHeight) / 100) + minHeight;
+                    System.out.println("Y2 - " + y2);
+//                }
+//                else{
+//                    y2 = maxHeight;
+//                }
+
+                
                 g.drawLine((int)x1, (int)y1, (int)x2, (int)y2);
                     
 
                 x1 = x2;
                 y1 = y2;
             }
+            Line(g, (int) gstartI,ggendI, maxValue, minValue);
             
         }
 //        else {
@@ -314,7 +338,7 @@ public class ModelFrame43 extends javax.swing.JFrame {
     }//GEN-LAST:event_TextFieldActionPerformed
 
     private void SelectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectButtonActionPerformed
-        intImpuls = Integer.parseInt(TextField.getText());
+        intImpuls = Double.valueOf(TextField.getText());
         //if (maxSamples > intImpuls & intImpuls > 0 ){
             repaint();
         //}

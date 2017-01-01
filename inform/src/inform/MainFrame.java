@@ -92,7 +92,7 @@ public class MainFrame extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(2000, 1000));
         setSize(new java.awt.Dimension(1280, 720));
 
-        jMenu1.setText("Файл");
+        jMenu1.setText("Ф1айл");
 
         jMenuItem1.setText("Открыть файл");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {

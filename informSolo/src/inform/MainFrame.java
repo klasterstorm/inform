@@ -455,7 +455,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void openModelFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openModelFrameActionPerformed
-        modelFrame4.setVisible(true);
+        modelFrame5.setVisible(true);
     }//GEN-LAST:event_openModelFrameActionPerformed
 
     
@@ -469,6 +469,7 @@ public class MainFrame extends javax.swing.JFrame {
     public static ModelFrame42 modelFrame2 = new ModelFrame42();
     public static ModelFrame43 modelFrame3 = new ModelFrame43();
     public static ModelFrame44 modelFrame4 = new ModelFrame44();
+    public static ModelFrame45 modelFrame5 = new ModelFrame45();
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -502,6 +503,8 @@ public class MainFrame extends javax.swing.JFrame {
                 modelFrame.setVisible(false);
                 modelFrame2.setVisible(false);
                 modelFrame3.setVisible(false);
+                modelFrame4.setVisible(false);
+                modelFrame5.setVisible(false);
             }
         });
     }

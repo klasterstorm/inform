@@ -33,7 +33,7 @@ public class ModelFrame42 extends javax.swing.JFrame {
 
     }
     
-    public int intImpuls = 0;
+    public int intImpuls = 100;
     public double maxSamples = 0;
     public int modelFrameWidth;
     public int modelFrameHeight;
@@ -135,14 +135,13 @@ public class ModelFrame42 extends javax.swing.JFrame {
         int xuy = (int) (ggendI - gstartI);
         
         
-        if (gstartI > 20){
-            Label1.setText((int)gstartI + " < " + "x" + " < " + ggendI);
+            Label1.setText(1 + " < " + "n0" + " < " + (maxSamples-1));
             
-            Line(g, (int) gstartI,ggendI,1,0);
+            Line(g, 0, (int) maxSamples,1,0);
             int count = intImpuls;
-            for(int i = (int) gstartI; i < ggendI; i++){
+            for(int i = 0; i <= maxSamples; i++){
 
-                x2 = Math.ceil(((width / xuy) * (i - gstartI)) + minWidth);
+                x2 = Math.ceil(((width / maxSamples) * i) + minWidth);
                 
                 //System.out.println(i + " *-* " + x2 +" +-+ "+ minWidth + "---" + (maxWidth + minWidth) + " s-e"+gstartI+"-"+ggendI);
                 
@@ -151,7 +150,7 @@ public class ModelFrame42 extends javax.swing.JFrame {
                 if(intImpuls < count) {
                     
                     if (push_ToArr == 1){
-                        streamArray2[i][suppArr-1] = String.valueOf(maxSamples);
+                        streamArray2[i][suppArr-1] = String.valueOf(maxSamples-1);
                     }
 
                     y2 = minHeight;
@@ -170,7 +169,7 @@ public class ModelFrame42 extends javax.swing.JFrame {
                 else {
 
                         if (push_ToArr == 1){
-                            streamArray2[i][suppArr-1] = String.valueOf(0);
+                            streamArray2[i][suppArr-1] = String.valueOf(1);
                         }
 
 
@@ -186,37 +185,6 @@ public class ModelFrame42 extends javax.swing.JFrame {
                 y1 = y2;
             }
             
-        }
-        else {
-            Label1.setText("0" + " < " + "x" + " < " + (int)maxSamples);
-            Line(g, 0, (int) maxSamples,1,0);
-            for(int i = 0; i < maxSamples; i++){
-                x2 = Math.ceil((width / maxSamples) * i + minWidth);
-
-                g.setColor(Color.MAGENTA);
-                if(i == intImpuls) {
-                    if (push_ToArr == 1){
-                        streamArray2[i][suppArr-1] = String.valueOf(maxSamples);
-                    }
-
-                    y2 = minHeight;
-                    g.drawLine((int)x1, (int)y1, (int)x2, (int)y2);
-                }
-                else {
-                    if (push_ToArr == 1){
-                        streamArray2[i][suppArr-1] = String.valueOf(0);
-                    }
-                    y2 = maxHeight + minHeight;
-                    g.drawLine((int)x1, (int)y1, (int)x2, (int)y2);
-                }
-
-                x1 = x2;
-                y1 = y2;
-            }
-        }
-        
-       
-        
         pushToArr = 0;
     }
 
@@ -240,7 +208,7 @@ public class ModelFrame42 extends javax.swing.JFrame {
         SelectButton = new javax.swing.JButton();
         Label1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        qwe = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Задержанный единичный скачок  ");
@@ -249,7 +217,6 @@ public class ModelFrame42 extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
         TextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        TextField.setText("1");
         TextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextFieldActionPerformed(evt);
@@ -266,19 +233,15 @@ public class ModelFrame42 extends javax.swing.JFrame {
         Label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Label1.setText("jLabel1");
 
-        jButton1.setText("TO ARR");
+        jButton1.setText("Добавить");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        qwe.setText("Обновить");
-        qwe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                qweActionPerformed(evt);
-            }
-        });
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Задержка скачка ( n0 )");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -291,21 +254,21 @@ public class ModelFrame42 extends javax.swing.JFrame {
                     .addComponent(SelectButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
                     .addComponent(TextField, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Label1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(qwe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(qwe, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGap(115, 115, 115)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Label1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SelectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 253, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(17, Short.MAX_VALUE))
         );
@@ -334,9 +297,9 @@ public class ModelFrame42 extends javax.swing.JFrame {
 
     private void SelectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectButtonActionPerformed
         intImpuls = Integer.parseInt(TextField.getText());
-        //if (maxSamples > intImpuls & intImpuls > 0 ){
+        if (maxSamples > intImpuls & intImpuls > 0 ){
             repaint();
-        //}
+        }
         //else {
             
         //}
@@ -355,10 +318,6 @@ public class ModelFrame42 extends javax.swing.JFrame {
         minRepaint();
         suppArr++;
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void qweActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qweActionPerformed
-        repaint();
-    }//GEN-LAST:event_qweActionPerformed
 
     /**
      * @param args the command line arguments
@@ -401,7 +360,7 @@ public class ModelFrame42 extends javax.swing.JFrame {
     private javax.swing.JButton SelectButton;
     private javax.swing.JTextField TextField;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton qwe;
     // End of variables declaration//GEN-END:variables
 }

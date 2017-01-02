@@ -17,6 +17,8 @@ import static inform.MinGraphics.gendI;
 import static inform.MinGraphics.gstartI;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /**
  *
@@ -34,7 +36,7 @@ public class ModelFrame43 extends javax.swing.JFrame {
 
     }
     
-    public double intImpuls = 0;
+    public double intImpuls = 0.99;
     public double maxSamples = 0;
     public int modelFrameWidth;
     public int modelFrameHeight;
@@ -94,25 +96,20 @@ public class ModelFrame43 extends javax.swing.JFrame {
         
         //Текст для горизонтальных полосок
         
-        
-        
-        //min2 - минимальное для этих измерений
-        //max2 - максимальное
-        // (min2 + max2) / 2 = 0,5 - среднее между ними
-        //но чет меня факает
-        
-        
-        float avr = (1) / 2;
-        double ebota = (1) / 2;
-        
-        //System.out.println(ebota + " 8======э " + avr);
+        double hortext = (max2 + min2)/2;
+        double hortext2 = (hortext + max2)/2;
+        double hortext3 = (hortext + min2)/2;
         
         g.setColor(Color.DARK_GRAY);
-        g.drawString(String.valueOf(max2),20,81);
-        g.drawString(String.valueOf(min2),20,lline1);
-        //g.drawString(String.valueOf(" ============ ХОЧУ ЗНАЧЕНИЕ ============ "),20,lline2);
-        //g.drawString(String.valueOf(" ============ ХОЧУ ЗНАЧЕНИЕ ============ "),20,lline3);
-        //g.drawString(String.valueOf(" ============ ХОЧУ ЗНАЧЕНИЕ ============ "),20,lline4);
+        g.drawString(String.valueOf(numberAfterPoint(max2,2)),20,81);
+        g.drawString(String.valueOf(numberAfterPoint(min2,2)),20,lline1);
+        g.drawString(String.valueOf(numberAfterPoint(hortext,2)),20,lline2);
+        g.drawString(String.valueOf(numberAfterPoint(hortext3,2)),20,lline3);
+        g.drawString(String.valueOf(numberAfterPoint(hortext2,2)),20,lline4);
+    }
+    
+    public static double numberAfterPoint(double numberMain,int number){
+        return new BigDecimal(numberMain).setScale(number, RoundingMode.HALF_UP).doubleValue();
     }
     
     public void Graphics(Graphics g, int push_ToArr){
@@ -134,91 +131,75 @@ public class ModelFrame43 extends javax.swing.JFrame {
         double diffXY = maxHeight - minHeight;
         int ggendI = (int) (gendI - 1);
         //System.out.println(gstartI + " !========================================! " + gendI);
-        int xuy = (int) (ggendI - gstartI);
-        
+//        int xuy = (int) (ggendI - gstartI);
+        int xuy = (int) maxSamples;        
         boolean firstValue = false;
-        double maxValue = 0;
-        double minValue = 0;
+        double maxValue = 11511;
+        double minValue = 11511;
         
-        if (gstartI > -1){
-            Label1.setText((int)gstartI + " < " + "x" + " < " + ggendI);
+        //if (gstartI > -1){
+            Label1.setText(0 + " < " + "a" + " < " + 1);
             
+            //Находим максимум и минимум
+            for(int i = 0; i <= maxSamples; i++){
+                double value = Math.pow(intImpuls, i);
+                if (maxValue == 11511){
+                    maxValue = value;
+                }
+                else{
+                    if(value > maxValue){
+                        maxValue = value;
+                    }
+                }
+                
+                
+                
+                if (minValue == 11511){
+                    minValue = value;
+                }
+                else{
+                    if(value < minValue){
+                        minValue = value;
+                    }
+                }
+            }
 
-            //int count = intImpuls;
-
-            for(int i = (int) gstartI; i < ggendI; i++){
-
-                x2 = Math.ceil(((width / xuy) * (i - gstartI)) + minWidth);
+            
+            for(int i = 0; i < maxSamples; i++){
+                x2 = Math.ceil(((width / xuy) * i) + minWidth);
+                //x2 = Math.ceil(((width / xuy) * (i - gstartI)) + minWidth);
                 
                 //System.out.println(i + " *-* " + x2 +" +-+ "+ minWidth + "---" + (maxWidth + minWidth) + " s-e"+gstartI+"-"+ggendI);
                 
                 g.setColor(Color.MAGENTA);
 
                     
-                if (push_ToArr == 1){
-                    streamArray2[i][suppArr-1] = String.valueOf(maxSamples);
-                }
+
 
                 //y2 = minHeight;
 
                 //double asdfg = Math.pow(pidor, i);
                 
-                if (firstValue == false){
-                    maxValue = Math.pow(intImpuls, (int) gstartI);
-                    minValue = Math.pow(intImpuls, ggendI); 
-                    firstValue = true;
-                }
-                double value = Math.pow(intImpuls, i);
-                System.out.println("VALUE - " + value);
-                y2 = (((value * 100) / maxValue));
-//                if (y2 > 0){
-                    System.out.println("0 - " + y2);
-                    y2 = 100 - y2;
-                    //y2 = y2 + minHeight;
-                    y2 = ((y2 * maxHeight) / 100) + minHeight;
-                    System.out.println("Y2 - " + y2);
-//                }
-//                else{
-//                    y2 = maxHeight;
-//                }
 
-                
+                double value = Math.pow(intImpuls, i);
+                //System.out.println("VALUE - " + value);
+                y2 = (((value * 100) / maxValue));
+                //System.out.println("0 - " + y2);
+                y2 = 100 - y2;
+                y2 = ((y2 * maxHeight) / 100) + minHeight;
+                //System.out.println("Y2 - " + y2);
+
+
+                if (push_ToArr == 1){
+                    streamArray2[i][suppArr-1] = String.valueOf(100 - y2);
+                }
                 g.drawLine((int)x1, (int)y1, (int)x2, (int)y2);
                     
 
                 x1 = x2;
                 y1 = y2;
             }
-            Line(g, (int) gstartI,ggendI, maxValue, minValue);
-            
-        }
-//        else {
-//            Label1.setText("0" + " < " + "x" + " < " + (int)maxSamples);
-//            Line(g, 0, (int) maxSamples,1,0);
-//            for(int i = 0; i < maxSamples; i++){
-//                x2 = Math.ceil((width / maxSamples) * i + minWidth);
-//
-//                g.setColor(Color.MAGENTA);
-//                if(i == intImpuls) {
-//                    if (push_ToArr == 1){
-//                        streamArray2[i][suppArr-1] = String.valueOf(maxSamples);
-//                    }
-//
-//                    y2 = minHeight;
-//                    g.drawLine((int)x1, (int)y1, (int)x2, (int)y2);
-//                }
-//                else {
-//                    if (push_ToArr == 1){
-//                        streamArray2[i][suppArr-1] = String.valueOf(0);
-//                    }
-//                    y2 = maxHeight + minHeight;
-//                    g.drawLine((int)x1, (int)y1, (int)x2, (int)y2);
-//                }
-//
-//                x1 = x2;
-//                y1 = y2;
-//            }
-//        }
+            Line(g, 0, (int) maxSamples, maxValue, minValue);
         
        
         
@@ -228,11 +209,14 @@ public class ModelFrame43 extends javax.swing.JFrame {
     public void paint(Graphics g) {
         modelFrameWidth = modelFrame3.getWidth();
         modelFrameHeight = modelFrame3.getHeight();
+        TextField.setText(String.valueOf(intImpuls));
         super.paint(g);
         fillScreen(g);
-        Cage(g);
-        Graphics(g,pushToArr);
 
+        Graphics(g,pushToArr);
+        
+        Cage(g);
+        
         System.out.println("ModelFrame paint");
     }
     
@@ -245,7 +229,7 @@ public class ModelFrame43 extends javax.swing.JFrame {
         SelectButton = new javax.swing.JButton();
         Label1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        qwe = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Дискретизированная убывающая экспонента");
@@ -254,7 +238,6 @@ public class ModelFrame43 extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
         TextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        TextField.setText("1");
         TextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextFieldActionPerformed(evt);
@@ -271,19 +254,15 @@ public class ModelFrame43 extends javax.swing.JFrame {
         Label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Label1.setText("jLabel1");
 
-        jButton1.setText("TO ARR");
+        jButton1.setText("Добавить");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        qwe.setText("Обновить");
-        qwe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                qweActionPerformed(evt);
-            }
-        });
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Амплитуда(а)");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -296,21 +275,21 @@ public class ModelFrame43 extends javax.swing.JFrame {
                     .addComponent(SelectButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
                     .addComponent(TextField, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Label1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(qwe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(qwe, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addContainerGap(104, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Label1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SelectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 253, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 214, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(17, Short.MAX_VALUE))
         );
@@ -338,14 +317,11 @@ public class ModelFrame43 extends javax.swing.JFrame {
     }//GEN-LAST:event_TextFieldActionPerformed
 
     private void SelectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectButtonActionPerformed
-        intImpuls = Double.valueOf(TextField.getText());
-        //if (maxSamples > intImpuls & intImpuls > 0 ){
-            repaint();
-        //}
-        //else {
-            
-        //}
-        //System.out.println(maxSamples + " > " + intImpuls + " > " + "0");
+
+        if (1 >= intImpuls & intImpuls >= 0 ){
+            intImpuls = Double.valueOf(TextField.getText());
+            repaint();  
+        }
     }//GEN-LAST:event_SelectButtonActionPerformed
 
     public static void minRepaint() {
@@ -360,10 +336,6 @@ public class ModelFrame43 extends javax.swing.JFrame {
         minRepaint();
         suppArr++;
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void qweActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qweActionPerformed
-        repaint();
-    }//GEN-LAST:event_qweActionPerformed
 
     /**
      * @param args the command line arguments
@@ -404,9 +376,9 @@ public class ModelFrame43 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label1;
     private javax.swing.JButton SelectButton;
-    private javax.swing.JTextField TextField;
+    public static javax.swing.JTextField TextField;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton qwe;
     // End of variables declaration//GEN-END:variables
 }

@@ -522,7 +522,7 @@ public class MinGraphics extends javax.swing.JInternalFrame implements MouseList
                     boolean flag = false;
                     for (int i = 0; i<MaxGraphQueue.length; i++) {
                         if (MaxGraphQueue[i] == index) {
-                            System.out.println("такой график уже добавлен");
+                            //System.out.println("такой график уже добавлен");
                             flag = true;
                         }
                     }
@@ -538,7 +538,7 @@ public class MinGraphics extends javax.swing.JInternalFrame implements MouseList
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         //хз куда запихать эту строчку jPopupMenu6.add("осцилограмма");
         //чот совсем туплю. 
-        System.out.println("НАЖАЛ");
+        //System.out.println("НАЖАЛ");
        //хз куда запихать эту строчку jPopupMenu6.add("осцилограмма");
         //чот совсем туплю. 
         if(test == 0) {
@@ -554,12 +554,12 @@ public class MinGraphics extends javax.swing.JInternalFrame implements MouseList
             initAll();
             jPopupMenu1.show(this, evt.getPoint().x, evt.getPoint().y);
             
-            System.out.println("ПКМ");
+            //System.out.println("ПКМ");
             
             for (int i = 0; i < 20;i++){
                 if(evt.getPoint().y > 31){
                     if(evt.getPoint().y > ((((minGraphic.getHeight() - 80) / calculateChannel()) * (i))) + 31 & evt.getPoint().y < ((((minGraphic.getHeight() - 80) / calculateChannel()) * (i + 1))) + 31){
-                        System.out.println("Текущий индекс равен = " + i);
+                        //System.out.println("Текущий индекс равен = " + i);
                         index = i;
                     }
                 }
@@ -568,7 +568,7 @@ public class MinGraphics extends javax.swing.JInternalFrame implements MouseList
         }
         else {
             
-            System.out.print("ЛКМ");
+            //System.out.print("ЛКМ");
             
             for (int i = 0; i < 20;i++){
                 if(evt.getPoint().y > 31){
@@ -635,13 +635,13 @@ public class MinGraphics extends javax.swing.JInternalFrame implements MouseList
     }//GEN-LAST:event_formMouseReleased
     public static void modelRepaint() {
         modelFrame.setSize(modelFrame.getWidth(), modelFrame.getHeight());
-        System.out.println("МОДЕЛ РЕПЕИНТ");
+        //System.out.println("МОДЕЛ РЕПЕИНТ");
     }
     
     
     public static void maxRepaint() {
         maxGraphic.setSize(maxGraphic.getWidth(), maxGraphic.getHeight());
-        System.out.println("МАКС РЕПЕИНТ");
+        //System.out.println("МАКС РЕПЕИНТ");
     }
     
     

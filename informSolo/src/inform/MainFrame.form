@@ -70,18 +70,115 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem3ActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="openModelFrame">
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x41c;&#x43e;&#x434;&#x435;&#x43b;&#x438;&#x440;&#x43e;&#x432;&#x430;&#x43d;&#x438;&#x435;"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x41e;&#x442;&#x43a;&#x440;&#x44b;&#x442;&#x44c; modelFrame"/>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#x417;&#x430;&#x434;&#x435;&#x440;&#x436;&#x430;&#x43d;&#x43d;&#x44b;&#x439; &#x435;&#x434;&#x438;&#x43d;&#x438;&#x447;&#x43d;&#x44b;&#x439; &#x438;&#x43c;&#x43f;&#x443;&#x43b;&#x44c;&#x441; "/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="openModelFrameActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem4ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+2"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#x417;&#x430;&#x434;&#x435;&#x440;&#x436;&#x430;&#x43d;&#x43d;&#x44b;&#x439; &#x435;&#x434;&#x438;&#x43d;&#x438;&#x447;&#x43d;&#x44b;&#x439; &#x441;&#x43a;&#x430;&#x447;&#x43e;&#x43a;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem5ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+3"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#x423;&#x431;&#x44b;&#x432;&#x430;&#x44e;&#x449;&#x430;&#x44f; &#x44d;&#x43a;&#x441;&#x43f;&#x43e;&#x43d;&#x435;&#x43d;&#x442;&#x430;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem6ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+4"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#x421;&#x438;&#x43d;&#x443;&#x441;&#x43e;&#x438;&#x434;&#x430; &#x441; &#x437;&#x430;&#x434;&#x430;&#x43d;&#x43d;&#x44b;&#x43c;&#x438; &#x430;&#x43c;&#x43f;&#x43b;&#x438;&#x442;&#x443;&#x434;&#x43e;&#x439;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem7ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+5"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#xab;&#x41c;&#x435;&#x430;&#x43d;&#x434;&#x440;&#xbb; "/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem8ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem9">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+6"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#xab;&#x41f;&#x438;&#x43b;&#x430;&#xbb; "/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem9ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem10">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+7"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#x421;&#x438;&#x433;&#x43d;&#x430;&#x43b; &#x441; &#x44d;&#x43a;&#x441;&#x43f;&#x43e;&#x43d;&#x435;&#x43d;&#x446;&#x438;&#x430;&#x43b;&#x44c;&#x43d;&#x43e;&#x439; &#x43e;&#x433;&#x438;&#x431;&#x430;&#x44e;&#x449;&#x435;&#x439;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem10ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem11">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+8"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#x421;&#x438;&#x433;&#x43d;&#x430;&#x43b; &#x441; &#x431;&#x430;&#x43b;&#x430;&#x43d;&#x441;&#x43d;&#x43e;&#x439; &#x43e;&#x433;&#x438;&#x431;&#x430;&#x44e;&#x449;&#x435;&#x439;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem11ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem12">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+9"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#x421;&#x438;&#x433;&#x43d;&#x430;&#x43b; &#x441; &#x442;&#x43e;&#x43d;&#x430;&#x43b;&#x44c;&#x43d;&#x43e;&#x439; &#x43e;&#x433;&#x438;&#x431;&#x430;&#x44e;&#x449;&#x435;&#x439;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem12ActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu4">
+        <Menu class="javax.swing.JMenu" name="jMenu5">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x424;&#x438;&#x43b;&#x44c;&#x442;&#x440;&#x430;&#x446;&#x438;&#x44f;"/>
           </Properties>

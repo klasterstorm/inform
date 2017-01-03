@@ -63,7 +63,7 @@ public class MaxGraphics extends javax.swing.JInternalFrame {
     
     public static void minRepaint() {
         minGraphic.setSize(minGraphic.getWidth(), minGraphic.getHeight());
-        System.out.println("МИН РЕПЕИНТ");
+        //System.out.println("МИН РЕПЕИНТ");
     }
     
     
@@ -109,7 +109,7 @@ public class MaxGraphics extends javax.swing.JInternalFrame {
             g.drawString("Нет активных графиков", (maxGraphic.getWidth() / 2) - 80, maxGraphic.getHeight() / 2);     
         }
         
-        System.out.println(maxLine1 + " MaxLine " + maxLineY);
+        //System.out.println(maxLine1 + " MaxLine " + maxLineY);
         if (maxLine1 > 100 & maxLine2 > 100){
             if (maxZoom == 1){
                 g.drawLine(maxLine1, 100, maxLine1, ((maxGraphic.getHeight() - 151)));
@@ -288,7 +288,7 @@ public class MaxGraphics extends javax.swing.JInternalFrame {
                 minRepaint();
             } 
             else {
-                System.out.println("графиков нет");
+                //System.out.println("графиков нет");
             }
         }
 
@@ -335,7 +335,7 @@ public class MaxGraphics extends javax.swing.JInternalFrame {
             
        
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
-       System.out.println("formMousePressed на MaxGraphics");
+       //System.out.println("formMousePressed на MaxGraphics");
        if(test == 0) {
             local = new JRadioButtonMenuItem("локальный масштаб");
             global = new JRadioButtonMenuItem("глобальный масштаб");
@@ -358,20 +358,20 @@ public class MaxGraphics extends javax.swing.JInternalFrame {
         int paddingTop = 41;
         int marginTop = 7;
         if(evt.getButton() == MouseEvent.BUTTON3){ 
-            System.out.println("formMousePressed на MaxGraphics = ПКМ");
+            //System.out.println("formMousePressed на MaxGraphics = ПКМ");
             menuPopUp.show(this, evt.getPoint().x, evt.getPoint().y);
 
             for (int i = 0; i < 20;i++){
                 if(evt.getPoint().y > 31){
                     if(evt.getPoint().y > (i * (((maxGraphic.getHeight()-151)/topQueue) + 7)) + 51 & evt.getPoint().y < ((i+1) * (((maxGraphic.getHeight()-151)/topQueue) + 7)) + 51){
-                        System.out.println("MAX - Текущий индекс равен = " + i);
+                        //System.out.println("MAX - Текущий индекс равен = " + i);
                         index = i;
                     }
                 }
             }
 
 
-            System.out.println("index: " + index);
+            //System.out.println("index: " + index);
 //            repaint();
         }
         else {
@@ -476,9 +476,9 @@ public class MaxGraphics extends javax.swing.JInternalFrame {
                     maxLineY = ((((maxGraphic.getHeight()-131)/topQueue) * 1) + (1 * marginTop) + paddingTop);
                     maxLine2 = evt.getPoint().x;
 
-                    System.out.println(" ========================= ");
+                    //System.out.println(" ========================= ");
 
-                    System.out.println("Глобальые ЗНАЧЕНИЯ " + border1X + " --- " + border2X);
+                    //System.out.println("Глобальые ЗНАЧЕНИЯ " + border1X + " --- " + border2X);
 
                     int maxborderProp1X = ((maxLine1 - 100) * 100) / (maxGraphic.getWidth() - 100);
                     int maxborderProp2X = ((maxLine2 - 100) * 100) / (maxGraphic.getWidth() - 100);
@@ -490,8 +490,8 @@ public class MaxGraphics extends javax.swing.JInternalFrame {
                     borderProp1X = border1X * 100 / minGraphic.getWidth();
                     borderProp2X = border2X * 100 / minGraphic.getWidth();
                     //System.out.println("Локальная ПРОПОРЦИЯ " + maxborderProp1X + " --- " + maxborderProp2X);
-                    System.out.println("Локальные ЗНАЧЕНИЯ " + border1X + " --- " + border2X);
-                    System.out.println(" ========================= ");
+                    //System.out.println("Локальные ЗНАЧЕНИЯ " + border1X + " --- " + border2X);
+                    //System.out.println(" ========================= ");
                     minRepaint();
                     maxZoom = 0;
                     repaint(); 

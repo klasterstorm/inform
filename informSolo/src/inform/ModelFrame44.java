@@ -21,6 +21,7 @@ import java.awt.Graphics;
 import static java.lang.Math.sin;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Random;
 
 /**
  *
@@ -39,6 +40,10 @@ public class ModelFrame44 extends javax.swing.JFrame {
     }
     
     public double a = 0.99;
+    public double w = 180;
+    public double f = 360;
+    
+    
     public double maxSamples = 0;
     public int modelFrameWidth;
     public int modelFrameHeight;
@@ -144,9 +149,7 @@ public class ModelFrame44 extends javax.swing.JFrame {
             
             //Находим максимум и минимум
             for(int n = 0; n < maxSamples; n++){
-                double w = Math.toRadians(180);
-                double f = Math.toRadians(360);
-                double value = a * sin(n * w + f);
+                double value = a * sin(n * Math.toRadians(w) + Math.toRadians(f));
                 
                 if (maxValue == 11511){
                     maxValue = value;
@@ -168,7 +171,7 @@ public class ModelFrame44 extends javax.swing.JFrame {
                     }
                 }
                 
-                System.out.println("АМПЛИТУДА МИН ---- МАКС " + minValue + " +++ " + maxValue);
+                //System.out.println("АМПЛИТУДА МИН ---- МАКС " + minValue + " +++ " + maxValue);
 
             }
 
@@ -190,14 +193,16 @@ public class ModelFrame44 extends javax.swing.JFrame {
                 //double asdfg = Math.pow(pidor, n);
                 
 
-                double w = Math.toRadians(180);
-                double f = Math.toRadians(360);
-                double value = a * sin(i * w + f);
+
+                double value = a * sin(i * Math.toRadians(w) + Math.toRadians(f));
                 //System.out.println("VALUE - " + value);
                 y2 = (((value * 100) / kekValue));
+
+                //y2 = Math.abs(y2);
                 //System.out.println("100% - " + y2);
-                y2 = 100 - y2;
+                y2 =50 - y2;
                 y2 = ((y2 * maxHeight) / 100) + minHeight;
+
                 //System.out.println("Y2 - " + y2);
 
 
@@ -205,12 +210,12 @@ public class ModelFrame44 extends javax.swing.JFrame {
                     streamArray2[i][suppArr-1] = String.valueOf(100 - y2);
                 }
                 
-                if (minValue < 0){
-                    g.drawLine((int)x1, (int) ((int)y1 - ((modelFrameHeight/2) - (minHeight - 11))), (int)x2, (int) ((int)y2 - ((modelFrameHeight/2) - (minHeight - 11))));
-                }
-                else {
+                //if (minValue < 0){
+                //    g.drawLine((int)x1, (int) ((int)y1 - ((modelFrameHeight/2) - (minHeight - 11))), (int)x2, (int) ((int)y2 - ((modelFrameHeight/2) - (minHeight - 11))));
+                //}
+                //else {
                     g.drawLine((int)x1, (int) y1, (int)x2, (int) y2);
-                }
+                //}
                     
  
                     
@@ -228,7 +233,9 @@ public class ModelFrame44 extends javax.swing.JFrame {
     public void paint(Graphics g) {
         modelFrameWidth = modelFrame4.getWidth();
         modelFrameHeight = modelFrame4.getHeight();
-        TextField.setText(String.valueOf(a));
+        TextField11.setText(String.valueOf(a));
+        TextField22.setText(String.valueOf(w));
+        TextField33.setText(String.valueOf(f));
         super.paint(g);
         fillScreen(g);
 
@@ -236,32 +243,175 @@ public class ModelFrame44 extends javax.swing.JFrame {
         
         Cage(g);
         
-        System.out.println("ModelFrame paint");
+        //System.out.println("ModelFrame paint");
     }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        TextField = new javax.swing.JTextField();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        TextField2 = new javax.swing.JTextField();
+        Label2 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        TextField3 = new javax.swing.JTextField();
+        Label3 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         SelectButton = new javax.swing.JButton();
-        Label1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        TextField1 = new javax.swing.JTextField();
+        Label1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        TextField22 = new javax.swing.JTextField();
+        Label4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        TextField33 = new javax.swing.JTextField();
+        Label5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        SelectButton1 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
+        TextField11 = new javax.swing.JTextField();
+        Label6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jButton9 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Дискретизированная убывающая экспонента");
-        setAlwaysOnTop(true);
+        jPanel5.setBackground(new java.awt.Color(214, 214, 214));
+        jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Шаблоны данных");
 
-        TextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        TextField.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("1");
+
+        jButton3.setText("3");
+
+        jButton4.setText("2");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel3.setBackground(new java.awt.Color(214, 214, 214));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        TextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextFieldActionPerformed(evt);
+                TextField2ActionPerformed(evt);
             }
         });
+
+        Label2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label2.setText("0° < w < 180°");
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Круговая частота ( w )");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TextField2)
+                    .addComponent(Label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Label2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jPanel4.setBackground(new java.awt.Color(214, 214, 214));
+        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        TextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextField3ActionPerformed(evt);
+            }
+        });
+
+        Label3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label3.setText("0° < f < 360°");
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Начальная фаза ( f )");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TextField3)
+                    .addComponent(Label3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Label3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         SelectButton.setText("Применить");
         SelectButton.addActionListener(new java.awt.event.ActionListener() {
@@ -270,47 +420,287 @@ public class ModelFrame44 extends javax.swing.JFrame {
             }
         });
 
-        Label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Label1.setText("jLabel1");
-
-        jButton1.setText("Добавить");
+        jButton1.setText("Добавить к графикам");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
+        jPanel2.setBackground(new java.awt.Color(214, 214, 214));
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        TextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextField1ActionPerformed(evt);
+            }
+        });
+
+        Label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label1.setText("0 < a < 1");
+
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Амплитуда(а)");
+        jLabel1.setText("Амплитуда ( а )");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TextField1)
+                    .addComponent(Label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Label1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Дискретизированная убывающая экспонента");
+        setAlwaysOnTop(true);
+
+        jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Шаблоны данных");
+
+        jButton5.setText("1");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setText("3");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("2");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        TextField22.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TextField22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextField22ActionPerformed(evt);
+            }
+        });
+
+        Label4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label4.setText("0° < w < 180°");
+
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Круговая частота ( w )");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TextField22)
+                    .addComponent(Label4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Label4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TextField22, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jPanel8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        TextField33.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TextField33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextField33ActionPerformed(evt);
+            }
+        });
+
+        Label5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label5.setText("0° < f < 360°");
+
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Начальная фаза ( f )");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TextField33)
+                    .addComponent(Label5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Label5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TextField33, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        SelectButton1.setText("Применить");
+        SelectButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SelectButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton8.setText("Добавить к графикам");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jPanel9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        TextField11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TextField11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextField11ActionPerformed(evt);
+            }
+        });
+
+        Label6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label6.setText("0 < a < 1");
+
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Амплитуда ( а )");
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TextField11)
+                    .addComponent(Label6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Label6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jButton9.setText("RAND");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
-                    .addComponent(SelectButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
-                    .addComponent(TextField, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Label1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(SelectButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(104, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Label1)
+                .addContainerGap()
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SelectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 214, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(SelectButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                    .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -329,26 +719,22 @@ public class ModelFrame44 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public int pushToArr = 0;
-    
-    private void TextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldActionPerformed
+    private void TextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldActionPerformed
+    }//GEN-LAST:event_TextField2ActionPerformed
+
+    private void TextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField3ActionPerformed
 
     private void SelectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectButtonActionPerformed
 
-        if (1 >= a & a >= 0 ){
-            a = Double.valueOf(TextField.getText());
-            repaint();  
-        }
+        //if (1 >= L & L >= 0 ){
+           // a = Double.valueOf(TextField1.getText());
+           // repaint();
+            //}
     }//GEN-LAST:event_SelectButtonActionPerformed
 
-    public static void minRepaint() {
-        minGraphic.setSize(minGraphic.getWidth(), minGraphic.getHeight());
-        System.out.println("МИН РЕПЕИНТ");
-    }
-    
-    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         pushToArr = 1;
         repaint();
@@ -356,6 +742,138 @@ public class ModelFrame44 extends javax.swing.JFrame {
         suppArr++;
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void TextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField1ActionPerformed
+
+    private void TextField22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField22ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField22ActionPerformed
+
+    private void TextField33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField33ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField33ActionPerformed
+
+    private void SelectButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectButton1ActionPerformed
+//a w f
+            a = Double.valueOf(TextField11.getText());
+            w = Double.valueOf(TextField22.getText());
+            f = Double.valueOf(TextField33.getText());
+            repaint();
+    }//GEN-LAST:event_SelectButton1ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        pushToArr = 1;
+        repaint();
+        minRepaint();
+        suppArr++;
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void TextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField11ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        a = Double.valueOf(0.6);
+        TextField11.setText(String.valueOf(a));
+        w = Double.valueOf(1);
+        TextField22.setText(String.valueOf(w));
+        f = Double.valueOf(280);
+        TextField33.setText(String.valueOf(f));
+        repaint();        
+
+
+        //TextField22.setText(String.valueOf(Double.valueOf(rand.nextInt(181))));
+        
+        // ------- 2
+        // f - 224
+        // w - 98
+        // a - 1
+        
+        // ------- 3
+        // f - 360
+        // w - 180
+        // a - 1
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        Random rand = new Random();
+        //double r = rand.nextInt(11) + 10; // от 10 до 20
+        a = Double.valueOf(rand.nextInt(10) + 1);
+        a = a / 10;
+        TextField11.setText(String.valueOf(a));
+        
+        w = Double.valueOf(rand.nextInt(181));
+        TextField22.setText(String.valueOf(w));
+        
+        f =Double.valueOf(rand.nextInt(361));
+        TextField33.setText(String.valueOf(f));
+        
+        repaint();
+        
+        // ------- 1
+        // f - 123
+        // w - 43
+        // a - 1
+        
+        // ------- 2
+        // f - 224
+        // w - 98
+        // a - 1
+        
+        // ------- 3
+        // f - 360
+        // w - 180
+        // a - 1
+
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        a = Double.valueOf(1);
+        TextField11.setText(String.valueOf(a));
+        w = Double.valueOf(179);
+        TextField22.setText(String.valueOf(Double.valueOf(Math.toRadians(w))));
+        f = Double.valueOf(100);
+        TextField33.setText(String.valueOf(Double.valueOf(Math.toRadians(f))));
+        repaint();        
+
+
+        //TextField22.setText(String.valueOf(Double.valueOf(rand.nextInt(181))));
+
+        
+        // ------- 3
+        // f - 360
+        // w - 180
+        // a - 1
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        a = Double.valueOf(1);
+        TextField11.setText(String.valueOf(Double.valueOf(1)));
+        w = Double.valueOf(180);
+        TextField22.setText(String.valueOf(Double.valueOf(Math.toRadians(w))));
+        f = Double.valueOf(360);
+        TextField33.setText(String.valueOf(Double.valueOf(Math.toRadians(f))));
+        repaint();        
+
+
+        //TextField22.setText(String.valueOf(Double.valueOf(rand.nextInt(181))));
+
+        
+        // ------- 3
+        // f - 360
+        // w - 180
+        // a - 1
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    public int pushToArr = 0;
+    
+    public static void minRepaint() {
+        minGraphic.setSize(minGraphic.getWidth(), minGraphic.getHeight());
+        System.out.println("МИН РЕПЕИНТ");
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -394,10 +912,44 @@ public class ModelFrame44 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label1;
+    private javax.swing.JLabel Label2;
+    private javax.swing.JLabel Label3;
+    private javax.swing.JLabel Label4;
+    private javax.swing.JLabel Label5;
+    private javax.swing.JLabel Label6;
     private javax.swing.JButton SelectButton;
-    public static javax.swing.JTextField TextField;
+    private javax.swing.JButton SelectButton1;
+    public static javax.swing.JTextField TextField1;
+    public static javax.swing.JTextField TextField11;
+    public static javax.swing.JTextField TextField2;
+    public static javax.swing.JTextField TextField22;
+    public static javax.swing.JTextField TextField3;
+    public static javax.swing.JTextField TextField33;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     // End of variables declaration//GEN-END:variables
 }

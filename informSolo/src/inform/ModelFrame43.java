@@ -235,8 +235,6 @@ public class ModelFrame43 extends javax.swing.JFrame {
         setTitle("Дискретизированная убывающая экспонента");
         setAlwaysOnTop(true);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-
         TextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

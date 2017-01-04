@@ -138,7 +138,7 @@ public class ModelFrame42 extends javax.swing.JFrame {
             Label1.setText(1 + " < " + "n0" + " < " + (maxSamples-1));
             
             Line(g, 0, (int) maxSamples,1,0);
-            int count = intImpuls;
+
             for(int i = 0; i <= maxSamples; i++){
 
                 x2 = Math.ceil(((width / maxSamples) * i) + minWidth);
@@ -147,7 +147,7 @@ public class ModelFrame42 extends javax.swing.JFrame {
                 
                 g.setColor(Color.MAGENTA);
                 
-                if(intImpuls < count) {
+                if(intImpuls < i) {
                     
                     if (push_ToArr == 1){
                         streamArray2[i][suppArr-1] = String.valueOf(maxSamples-1);
@@ -156,29 +156,21 @@ public class ModelFrame42 extends javax.swing.JFrame {
                     y2 = minHeight;
                     g.drawLine((int)x1, (int)y1, (int)x2, (int)y2);
 
-                    if (intImpuls * 2 >= count){
-                        count++;
-                        System.out.println("Текущий каунт " + count + " <= " + intImpuls + " ПРОДЛЯЮ");
-                    }
-                    else {
-                        System.out.println("Текущий каунт " + count + " > " + intImpuls + " СБРАСЫВАЮ");
-                        count = 1;
-                    }
 
                 }
                 else {
 
-                        if (push_ToArr == 1){
-                            streamArray2[i][suppArr-1] = String.valueOf(1);
-                        }
+                    if (push_ToArr == 1){
+                        streamArray2[i][suppArr-1] = String.valueOf(1);
+                    }
 
 
-                        y2 = maxHeight + minHeight;
-                        g.drawLine((int)x1, (int)y1, (int)x2, (int)y2);
-                        System.out.println("Текущий каунт " + count + " <= " + intImpuls + " УВЕЛИЧИВАЮ");
+                    y2 = maxHeight + minHeight;
+                    g.drawLine((int)x1, (int)y1, (int)x2, (int)y2);
+                    //System.out.println("Текущий каунт " + count + " <= " + intImpuls + " УВЕЛИЧИВАЮ");
 
 
-                    count++;
+                    //count++;
                 }
 
                 x1 = x2;

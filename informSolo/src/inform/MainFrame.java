@@ -556,7 +556,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-
+        modelFrame5.setVisible(true);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
@@ -586,6 +586,7 @@ public class MainFrame extends javax.swing.JFrame {
     public static ModelFrame42 modelFrame2 = new ModelFrame42();
     public static ModelFrame43 modelFrame3 = new ModelFrame43();
     public static ModelFrame44 modelFrame4 = new ModelFrame44();
+    public static ModelFrame45 modelFrame5 = new ModelFrame45();
     public static ModelFrame46 modelFrame6 = new ModelFrame46();
 
     public static void main(String args[]) {
@@ -622,7 +623,7 @@ public class MainFrame extends javax.swing.JFrame {
                 modelFrame2.setVisible(false);
                 modelFrame3.setVisible(false);
                 modelFrame4.setVisible(false);
-                
+                modelFrame5.setVisible(false);
                 modelFrame6.setVisible(false);
             }
         });

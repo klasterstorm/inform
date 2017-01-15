@@ -13,6 +13,7 @@ import static inform.MainFrame.modelFrame2;
 import static inform.MainFrame.modelFrame3;
 import static inform.MainFrame.modelFrame4;
 import static inform.MainFrame.modelFrame7;
+import static inform.MainFrame.modelFrame8;
 import static inform.MainFrame.samplesNumber;
 import static inform.MainFrame.samplingRate;
 import static inform.MainFrame.startTime;
@@ -32,26 +33,25 @@ import java.util.Random;
  *
  * @author KLASTER
  */
-public class ModelFrame47 extends javax.swing.JFrame {
+public class ModelFrame48 extends javax.swing.JFrame {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * Creates new form ModelFrame
      */
-    public ModelFrame47() {
+    public ModelFrame48() {
         initComponents();
 
     }
     
-    public double a = 1.5;
-    public double ti = 200;
-    public double fi = 1.25;
-    public double f = 0.005;
+    public double a = 10;
+    //public double ti = 0.001;
+    public double fi = 0.1;
+    public double fo = 0.001;
     public double t = 0;
-    
-    
-    
+    public double fn = 0.01;
+
     
     public double maxSamples = 0;
     public int modelFrameWidth;
@@ -173,11 +173,11 @@ public class ModelFrame47 extends javax.swing.JFrame {
                 t = ((n * Integer.parseInt(samplingRate)));
                 
                 //ti = 200;
-                double value = a * Math.exp(-1 * t / ti) * Math.cos(Math.toRadians(360) * f * t + fi);
+                double value = a * Math.cos(Math.toRadians(360) * fo * t) * Math.cos(Math.toRadians(360) * fn * t + fi);
                 
                 //System.out.println("VALUE ___ 1 " + a);
                 //System.out.println("VALUE ___ 2 " + Math.exp(-t / ti));
-                //System.out.println("VALUE ___ 3 " + Math.cos(Math.toRadians(360) * f * t + fi));
+                //System.out.println("VALUE ___ 3 " + Math.cos(Math.toRadians(360) * fo * t + fi));
                 //System.out.println("VALUE ___ 4 " + value);
 
                 
@@ -214,7 +214,7 @@ public class ModelFrame47 extends javax.swing.JFrame {
             
             for(int n = 0; n < maxSamples; n++){
                 t = ((n * Integer.parseInt(samplingRate)));
-                double value = a * Math.exp(-1 * t / ti) * Math.cos(Math.toRadians(360) * f * t + fi);
+                double value = a * Math.cos(Math.toRadians(360) * fo * t) * Math.cos(Math.toRadians(360) * fn * t + fi);
                 y2 = (((value * 100) / differValue));
                 
                 if (maxProc == 222){
@@ -247,11 +247,11 @@ public class ModelFrame47 extends javax.swing.JFrame {
 
                 t = ((i * Integer.parseInt(samplingRate)));
                 
-                double value = a * Math.exp(-1 * t / ti) * Math.cos(Math.toRadians(360) * f * t + fi);
+                double value = a * Math.cos(Math.toRadians(360) * fo * t) * Math.cos(Math.toRadians(360) * fn * t + fi);
 
                 y2 = (((value * 100) / differValue));
                 y2 = (maxProc) - y2;
-                y2 = ((y2 * maxHeight) / 100) + minHeight + 5;
+                y2 = ((y2 * maxHeight) / 100) + minHeight + 1;
 
 
 
@@ -280,12 +280,12 @@ public class ModelFrame47 extends javax.swing.JFrame {
     }
 
     public void paint(Graphics g) {
-        modelFrameWidth = modelFrame7.getWidth();
-        modelFrameHeight = modelFrame7.getHeight();
+        modelFrameWidth = modelFrame8.getWidth();
+        modelFrameHeight = modelFrame8.getHeight();
         TextField11.setText(String.valueOf(a));
-        TextField22.setText(String.valueOf(f));
+        TextField22.setText(String.valueOf(fo));
         TextField33.setText(String.valueOf(fi));
-        TextField44.setText(String.valueOf(ti));
+        TextField44.setText(String.valueOf(fn));
 
         super.paint(g);
         fillScreen(g);
@@ -293,7 +293,7 @@ public class ModelFrame47 extends javax.swing.JFrame {
         Graphics(g,pushToArr);
         
         Cage(g);
-        System.out.println("DISCRET " + (f * Double.parseDouble(samplingRate)));
+        //System.out.println("DISCRET " + (fo * Double.parseDouble(samplingRate)));
         //System.out.println("ModelFrame paint");
     }
     
@@ -518,7 +518,7 @@ public class ModelFrame47 extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Дискретизированная убывающая экспонента");
+        setTitle("Сигнал с балансной огибающей\n");
         setAlwaysOnTop(true);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -587,7 +587,7 @@ public class ModelFrame47 extends javax.swing.JFrame {
         });
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Круговая частота ( f )");
+        jLabel6.setText("Частота огибающей ( fo )");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -700,7 +700,7 @@ public class ModelFrame47 extends javax.swing.JFrame {
         });
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Ширина огибающей ( т )");
+        jLabel9.setText("Частота несущей ( fn )");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -756,7 +756,7 @@ public class ModelFrame47 extends javax.swing.JFrame {
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addComponent(SelectButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -818,9 +818,9 @@ public class ModelFrame47 extends javax.swing.JFrame {
 
     private void SelectButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectButton1ActionPerformed
         a = Double.parseDouble(TextField11.getText());
-        f = Double.parseDouble(TextField22.getText());
+        fo = Double.parseDouble(TextField22.getText());
         fi = Double.parseDouble(TextField33.getText());
-        ti = Double.parseDouble(TextField44.getText());
+        fn = Double.parseDouble(TextField44.getText());
         repaint();
     }//GEN-LAST:event_SelectButton1ActionPerformed
 
@@ -838,36 +838,36 @@ public class ModelFrame47 extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         fi = Double.valueOf(1.3);
         TextField11.setText(String.valueOf(fi));
-        f = Double.valueOf(0.005);
-        TextField22.setText(String.valueOf(f));
+        fo = Double.valueOf(0.005);
+        TextField22.setText(String.valueOf(fo));
         a = Double.valueOf(2.0);
         TextField33.setText(String.valueOf(a));
-        ti = Double.valueOf(1000);
-        TextField44.setText(String.valueOf(ti));
+        fn = Double.valueOf(14);
+        TextField44.setText(String.valueOf(fn));
         repaint();        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         fi = Double.valueOf(0.05);
         TextField11.setText(String.valueOf(fi));
-        f = Double.valueOf(0.001);
-        TextField22.setText(String.valueOf(f));
+        fo = Double.valueOf(0.001);
+        TextField22.setText(String.valueOf(fo));
         a = Double.valueOf(1.5);
         TextField33.setText(String.valueOf(a));
-        ti = Double.valueOf(1000);
-        TextField44.setText(String.valueOf(ti));
+        fn = Double.valueOf(1000);
+        TextField44.setText(String.valueOf(fn));
         repaint();        
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        fi = Double.valueOf(0.55);
+        fi = Double.valueOf(0.1);
         TextField11.setText(String.valueOf(fi));
-        f = Double.valueOf(0.01);
-        TextField22.setText(String.valueOf(f));
-        a = Double.valueOf(1.0);
+        fo = Double.valueOf(0.001);
+        TextField22.setText(String.valueOf(fo));
+        a = Double.valueOf(10);
         TextField33.setText(String.valueOf(a));
-        ti = Double.valueOf(1000000);
-        TextField44.setText(String.valueOf(ti));
+        fn = Double.valueOf(0.01);
+        TextField44.setText(String.valueOf(fn));
         repaint();    
     }//GEN-LAST:event_jButton6ActionPerformed
 

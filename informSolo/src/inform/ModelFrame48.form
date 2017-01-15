@@ -290,7 +290,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="title" type="java.lang.String" value="&#x414;&#x438;&#x441;&#x43a;&#x440;&#x435;&#x442;&#x438;&#x437;&#x438;&#x440;&#x43e;&#x432;&#x430;&#x43d;&#x43d;&#x430;&#x44f; &#x443;&#x431;&#x44b;&#x432;&#x430;&#x44e;&#x449;&#x430;&#x44f; &#x44d;&#x43a;&#x441;&#x43f;&#x43e;&#x43d;&#x435;&#x43d;&#x442;&#x430;"/>
+    <Property name="title" type="java.lang.String" value="&#x421;&#x438;&#x433;&#x43d;&#x430;&#x43b; &#x441; &#x431;&#x430;&#x43b;&#x430;&#x43d;&#x441;&#x43d;&#x43e;&#x439; &#x43e;&#x433;&#x438;&#x431;&#x430;&#x44e;&#x449;&#x435;&#x439;&#xa;"/>
     <Property name="alwaysOnTop" type="boolean" value="true"/>
   </Properties>
   <SyntheticProperties>
@@ -366,7 +366,7 @@
                   <Component id="jPanel9" min="-2" pref="77" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel10" min="-2" pref="77" max="-2" attributes="0"/>
-                  <EmptySpace pref="22" max="32767" attributes="0"/>
+                  <EmptySpace pref="69" max="32767" attributes="0"/>
                   <Component id="SelectButton1" min="-2" pref="39" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
@@ -504,7 +504,7 @@
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="&#x41a;&#x440;&#x443;&#x433;&#x43e;&#x432;&#x430;&#x44f; &#x447;&#x430;&#x441;&#x442;&#x43e;&#x442;&#x430; ( f )"/>
+                <Property name="text" type="java.lang.String" value="&#x427;&#x430;&#x441;&#x442;&#x43e;&#x442;&#x430; &#x43e;&#x433;&#x438;&#x431;&#x430;&#x44e;&#x449;&#x435;&#x439; ( fo )"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -682,7 +682,7 @@
             <Component class="javax.swing.JLabel" name="jLabel9">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="&#x428;&#x438;&#x440;&#x438;&#x43d;&#x430; &#x43e;&#x433;&#x438;&#x431;&#x430;&#x44e;&#x449;&#x435;&#x439; ( &#x442; )"/>
+                <Property name="text" type="java.lang.String" value="&#x427;&#x430;&#x441;&#x442;&#x43e;&#x442;&#x430; &#x43d;&#x435;&#x441;&#x443;&#x449;&#x435;&#x439; ( fn )"/>
               </Properties>
             </Component>
           </SubComponents>

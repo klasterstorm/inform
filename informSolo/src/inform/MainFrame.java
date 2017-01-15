@@ -597,7 +597,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        // TODO add your handling code here:
+        modelFrame8.setVisible(true);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
@@ -618,6 +618,7 @@ public class MainFrame extends javax.swing.JFrame {
     public static ModelFrame45 modelFrame5 = new ModelFrame45();
     public static ModelFrame46 modelFrame6 = new ModelFrame46();
     public static ModelFrame47 modelFrame7 = new ModelFrame47();
+    public static ModelFrame48 modelFrame8 = new ModelFrame48();
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -656,6 +657,7 @@ public class MainFrame extends javax.swing.JFrame {
                 modelFrame5.setVisible(false);
                 modelFrame6.setVisible(false);
                 modelFrame7.setVisible(false);
+                modelFrame8.setVisible(false);
             }
         });
     }

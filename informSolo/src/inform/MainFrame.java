@@ -561,7 +561,7 @@ public class MainFrame extends javax.swing.JFrame {
         autorsFrame.setTitle("Авторы");
         autorsFrame.setVisible(true);
 //      посылаем строку и размер текстового поля (не фрейма!)
-        setTextToTextField("\nБаян Евгений\nДаниленко Данила\n\n\n\n\n\n\nБ8319а, 2016 год",widht, height);
+        setTextToTextField("\nБаян Евгений\n\n\n\n\n\n\n\nБ8319а, 2016-2017 год",widht, height);
     }//GEN-LAST:event_jMenu11MouseClicked
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -601,7 +601,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-        // TODO add your handling code here:
+        modelFrame9.setVisible(true);
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     
@@ -619,6 +619,7 @@ public class MainFrame extends javax.swing.JFrame {
     public static ModelFrame46 modelFrame6 = new ModelFrame46();
     public static ModelFrame47 modelFrame7 = new ModelFrame47();
     public static ModelFrame48 modelFrame8 = new ModelFrame48();
+    public static ModelFrame49 modelFrame9 = new ModelFrame49();
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -658,6 +659,7 @@ public class MainFrame extends javax.swing.JFrame {
                 modelFrame6.setVisible(false);
                 modelFrame7.setVisible(false);
                 modelFrame8.setVisible(false);
+                modelFrame9.setVisible(false);
             }
         });
     }

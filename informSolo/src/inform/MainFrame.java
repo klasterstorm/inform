@@ -24,7 +24,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -378,7 +377,7 @@ public class MainFrame extends javax.swing.JFrame {
         try {
             //переводим дату в формат date
             date = format.parse(dateForFormat);
-            
+
         } catch (ParseException ex) {}
         
         SimpleDateFormat format2 = new SimpleDateFormat("H:mm:ss");
@@ -387,10 +386,40 @@ public class MainFrame extends javax.swing.JFrame {
 
         //cal.setTimeInMillis(danilapidor);
         cal.setTimeInMillis(date.getTime() + time);
+        //System.out.println("!_!_!_!_!__!_!_!_!__!_!__! " + cal.getTimeInMillis());
         //cal.setTimeInMillis(date.getTime());
         //System.out.println(date.getTime());
 
         return format2.format(cal.getTime());
+        
+    }
+    
+    @SuppressWarnings("unchecked")
+    public static String thisTime(){
+        //подгоняем дату+время начала под формат
+        startDate = startDate.replace("-", ".");
+        String dateForFormat = startTime;
+        SimpleDateFormat format2 = new SimpleDateFormat("H:mm:ss");
+        //вот и формат, собственно
+        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy H:mm");  
+
+        try {
+            //переводим дату в формат date
+            date = format2.parse(dateForFormat);
+
+        } catch (ParseException ex) {}
+        
+
+        
+        cal.clear();
+
+        //cal.setTimeInMillis(danilapidor);
+        cal.setTimeInMillis(date.getTime());
+        //System.out.println("!_!_!_!_!__!_!_!_!__!_!__! " + cal.getTimeInMillis());
+        //cal.setTimeInMillis(date.getTime());
+        //System.out.println(date.getTime());
+
+        return cal.getTimeInMillis()+"";
         
     }
  
@@ -564,7 +593,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        // TODO add your handling code here:
+        modelFrame7.setVisible(true);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
@@ -588,7 +617,8 @@ public class MainFrame extends javax.swing.JFrame {
     public static ModelFrame44 modelFrame4 = new ModelFrame44();
     public static ModelFrame45 modelFrame5 = new ModelFrame45();
     public static ModelFrame46 modelFrame6 = new ModelFrame46();
-
+    public static ModelFrame47 modelFrame7 = new ModelFrame47();
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -625,6 +655,7 @@ public class MainFrame extends javax.swing.JFrame {
                 modelFrame4.setVisible(false);
                 modelFrame5.setVisible(false);
                 modelFrame6.setVisible(false);
+                modelFrame7.setVisible(false);
             }
         });
     }

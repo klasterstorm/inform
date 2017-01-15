@@ -11,6 +11,7 @@ import static inform.MainFrame.channelsNames;
 import static inform.MainFrame.channelsNumber;
 import static inform.MainFrame.maxGraphic;
 import static inform.MainFrame.minGraphic;
+import static inform.MainFrame.supChannelsNames;
 import static inform.MainFrame.userMinMaxFrame;
 import static inform.MinGraphics.Graphics;
 import static inform.MinGraphics.border1X;
@@ -96,7 +97,9 @@ public class MaxGraphics extends javax.swing.JInternalFrame {
             
             //Названия каналов
             if(MaxGraphQueue[i] > Integer.parseInt(channelsNumber)-1){
-                g.drawString("Model"+Integer.toString(i+1), maxGraphic.getWidth()-80, (((maxGraphic.getHeight() - 130)/topQueue) * (i + 1)) + 31);
+                //supChannelsNames[MaxGraphQueue[i]]
+                System.out.println(i + " {+} " + MaxGraphQueue[i] + " {+} " + Integer.parseInt(channelsNumber) + " {+} " +  (i - Integer.parseInt(channelsNumber)));
+                g.drawString(supChannelsNames[MaxGraphQueue[i] - Integer.parseInt(channelsNumber)], maxGraphic.getWidth()-80, (((maxGraphic.getHeight() - 130)/topQueue) * (i + 1)) + 31);
             }
             else {
                 g.drawString(channelsNames[MaxGraphQueue[i]], maxGraphic.getWidth()-80, (((maxGraphic.getHeight() - 130)/topQueue) * (i + 1)) + 31);

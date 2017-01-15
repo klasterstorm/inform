@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
@@ -28,6 +29,7 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -53,6 +55,7 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem13 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -100,7 +103,7 @@ public class MainFrame extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(2000, 1000));
         setSize(new java.awt.Dimension(1280, 720));
 
-        jMenu1.setText("Ф1айл");
+        jMenu1.setText("Файл");
 
         jMenuItem1.setText("Открыть файл");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -109,6 +112,14 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem1);
+
+        jMenuItem13.setText("Сохранить файл");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem13);
 
         jMenuBar1.add(jMenu1);
 
@@ -276,6 +287,7 @@ public class MainFrame extends javax.swing.JFrame {
     public static String startTime = "";
     //Названия каналов. Записанны в массиве, чтобы было проще к ним обращаться.
     public static String[] channelsNames;
+    public static String[] supChannelsNames;
     //Данные из файла
     public static String[][] streamArray;
     
@@ -340,6 +352,7 @@ public class MainFrame extends javax.swing.JFrame {
                             case 12:
                                 //Загоняю в массив название каналов, отделяя элементы по ";"
                                 channelsNames = line.split(";");
+                                supChannelsNames = new String [50];
                                 break;
                         }
                     }
@@ -604,6 +617,106 @@ public class MainFrame extends javax.swing.JFrame {
         modelFrame9.setVisible(true);
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+//    File file = new File("NEW_FILE_MTHRFCKR.txt");
+//        try {
+//            file.createNewFile();
+//        } catch (IOException ex) {
+//            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//      
+//        try {
+//
+//        } catch (IOException ex) {
+//            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.TXT","*.*");
+        JFileChooser fc = new JFileChooser();
+        fc.setFileFilter(filter);
+        if ( fc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION ) {
+            try ( FileWriter filewriter = new FileWriter(fc.getSelectedFile()) ) {
+                filewriter.write("# channels number" + "\n");
+                filewriter.write(Integer.parseInt(channelsNumber) + suppArr + "\n");
+                filewriter.write("# samples number" + "\n");
+                filewriter.write(samplesNumber + "\n");
+                filewriter.write("# sampling rate" + "\n");
+                filewriter.write(samplingRate + "\n");
+                filewriter.write("# start date" + "\n");
+                filewriter.write(startDate + "\n");
+                filewriter.write("# start time" + "\n");
+                filewriter.write(startTime + "\n");
+                filewriter.write("# channels names" + "\n");
+                for (int i=0;i < (channelsNames.length + suppArr);i++){
+                    if (i+1 != channelsNames.length + suppArr){
+                        if (i > channelsNames.length-1){
+                            filewriter.write(supChannelsNames[i - channelsNames.length]+";");
+                        }
+                        else {
+                            filewriter.write(channelsNames[i]+";");
+                        }
+
+                    }
+                    else {
+                        if (i > channelsNames.length-1){
+                            filewriter.write(supChannelsNames[i - channelsNames.length]+"\n");
+                        }
+                        else {
+                            filewriter.write(channelsNames[i]+"\n");
+                        }
+                    }
+                }
+                for (int i = 0;i < Integer.parseInt(samplesNumber); i++){
+                    for (int j = 0;j < (Integer.parseInt(channelsNumber) + suppArr); j++){
+                        if (j > Integer.parseInt(channelsNumber) - 1){
+                            filewriter.write(streamArray2[i][j - Integer.parseInt(channelsNumber)] + n());
+                        }
+                        else{
+                            filewriter.write(streamArray[i][j] + n());
+                        }
+
+                        filewriter.flush();
+                    }
+                }
+            }
+            catch ( IOException e ) {
+                System.out.println("Всё погибло!");
+            }
+        }
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    public void WriteFile() throws IOException{
+       //System.out.println("CHANNELS "+Integer.parseInt(channelsNumber) + suppArr);
+        try (FileWriter filewriter = new FileWriter("NEW_FILE_MTHRFCKR.txt")) {
+            /*
+            # channels number
+6
+# samples number
+      1214
+# sampling rate
+         1
+# start date
+20-07-2014
+# start time
+18:32:21.000
+# channels names
+BHN;BHE;BHZ;HH1;HH2;HHZ
+            */
+
+                
+        }
+    }
+    
+    static int c = 0;
+    public static String n(){
+        if ((Integer.parseInt(channelsNumber) + suppArr) - 1 == c){
+            c = 0;
+            return " \n";
+        }
+        else {
+            c++;
+            return " ";
+        }
+    }
     
     public static double FPS = 2;
     
@@ -681,6 +794,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

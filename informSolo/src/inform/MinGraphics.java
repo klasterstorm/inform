@@ -28,6 +28,7 @@ import static inform.MainFrame.modelFrame;
 import static inform.MainFrame.samplesNumber;
 import static inform.MainFrame.samplingRate;
 import static inform.MainFrame.streamArray2;
+import static inform.MainFrame.supChannelsNames;
 import static inform.MainFrame.timeMaxGraphic;
 import static inform.MainFrame.timeMaxGraphicArray;
 import static inform.MaxGraphics.MaxGraphQueue;
@@ -116,7 +117,8 @@ public class MinGraphics extends javax.swing.JInternalFrame implements MouseList
 
             //Названия каналов
             if(j > Integer.parseInt(channelsNumber)-1){
-                g.drawString("Model"+Integer.toString(j+1), 
+                supChannelsNames[j - channelsNames.length] = "Model"+((j - channelsNames.length)+1);
+                g.drawString(supChannelsNames[j - channelsNames.length], 
                         (minGraphic.getWidth()-21) / 2, 
                         ((((minGraphic.getHeight() - 80) / calculateChannel()) * (j + 1))) + 31);
             }
@@ -668,11 +670,6 @@ public class MinGraphics extends javax.swing.JInternalFrame implements MouseList
     public int test = 0;
     public int index;
 
-    //если нажали по графику ПКН, то показываем всплывающее меню
-    //координаты посылаем меню — там где кликнул пользователь
-    //ну а на какой график тыкнули? Можно определять так: по x не важна координата
-    //а важна координата по y. Ну вот y от 0 до 100 — первый график, от 101 до 200 — второй и тд
-    //ну это самый простой (плохой) вариант. Ибо графиков может быть миллион. 
 
     @Override
     public void mousePressed(MouseEvent e) {

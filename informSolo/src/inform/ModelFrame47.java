@@ -13,6 +13,7 @@ import static inform.MainFrame.modelFrame2;
 import static inform.MainFrame.modelFrame3;
 import static inform.MainFrame.modelFrame4;
 import static inform.MainFrame.modelFrame7;
+import static inform.MainFrame.nonTXT;
 import static inform.MainFrame.samplesNumber;
 import static inform.MainFrame.samplingRate;
 import static inform.MainFrame.startTime;
@@ -129,7 +130,7 @@ public class ModelFrame47 extends javax.swing.JFrame {
     }
     
     public void Graphics(Graphics g, int push_ToArr){
-        maxSamples = Integer.parseInt(samplesNumber);
+        maxSamples = nonTXT();
         
 
         

@@ -81,6 +81,7 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
+        jMenuItem16 = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
         jMenu11 = new javax.swing.JMenu();
 
@@ -274,6 +275,16 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuBar1.add(jMenu6);
 
         jMenu7.setText("Настройки");
+
+        jMenuItem16.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.META_MASK));
+        jMenuItem16.setText("Превью графиков");
+        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem16ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem16);
+
         jMenuBar1.add(jMenu7);
 
         jMenu10.setText("Справка");
@@ -343,6 +354,9 @@ public class MainFrame extends javax.swing.JFrame {
     //минимальное и максимальное значение, которое ввел пользователь
     public static int maxUserValue = 0;
     public static int minUserValue = 0;
+    
+    
+    public static int usage = 0;
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         
@@ -490,7 +504,25 @@ public class MainFrame extends javax.swing.JFrame {
             }
         }
     }
+    
 
+
+    public static int nonTXT(){
+        if (samplesNumber == ""){
+            
+            samplesNumber = "600";
+
+            //int intSamples = (int) maxSamples;
+            streamArray2 = new String [Integer.parseInt(samplesNumber)][50];
+            channelsNumber = "0";
+            channelsNames = new String [0];
+            supChannelsNames = new String [50];
+            samplingRate = "1";
+            startTime = "10:00:00.000";
+            startDate = "01-01-2000";
+        }
+        return Integer.parseInt(samplesNumber);
+    }
 
     public static Date date = null;
 
@@ -669,6 +701,11 @@ public class MainFrame extends javax.swing.JFrame {
         modelFrame11.setVisible(true);
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
+    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+        jDesktopPane1.add(minGraphic);
+        minGraphic.show();
+    }//GEN-LAST:event_jMenuItem16ActionPerformed
+
     public static void WriteFile() throws IOException{
         FileNameExtensionFilter filter = new FileNameExtensionFilter("*.TXT","*.*");
         JFileChooser fc = new JFileChooser();
@@ -830,6 +867,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

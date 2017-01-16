@@ -12,6 +12,7 @@ import static inform.MainFrame.channelsNumber;
 import static inform.MainFrame.maxGraphic;
 import static inform.MainFrame.minGraphic;
 import static inform.MainFrame.supChannelsNames;
+import static inform.MainFrame.usage;
 import static inform.MainFrame.userMinMaxFrame;
 import static inform.MinGraphics.Graphics;
 import static inform.MinGraphics.border1X;
@@ -470,7 +471,7 @@ public class MaxGraphics extends javax.swing.JInternalFrame {
                 if(evt.getPoint().y > (i * (((maxGraphic.getHeight()-151)/topQueue) + 7)) + 51 & evt.getPoint().y < ((i+1) * (((maxGraphic.getHeight()-151)/topQueue) + 7)) + 51){
                     maxLineY = ((((maxGraphic.getHeight()-131)/topQueue) * 1) + (1 * marginTop) + paddingTop);
                     maxLine2 = evt.getPoint().x;
-
+                    usage = 0;
                     //System.out.println(" ========================= ");
 
                     //System.out.println("Глобальые ЗНАЧЕНИЯ " + border1X + " --- " + border2X);

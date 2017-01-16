@@ -10,11 +10,13 @@ import static inform.MainFrame.minGraphic;
 import static inform.MainFrame.modelFrame;
 import static inform.MainFrame.modelFrame2;
 import static inform.MainFrame.modelFrame3;
+import static inform.MainFrame.nonTXT;
 import static inform.MainFrame.samplesNumber;
 import static inform.MainFrame.streamArray2;
 import static inform.MainFrame.suppArr;
 import static inform.MinGraphics.gendI;
 import static inform.MinGraphics.gstartI;
+import static inform.MinGraphics.numberOfGraph;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.math.BigDecimal;
@@ -113,7 +115,7 @@ public class ModelFrame43 extends javax.swing.JFrame {
     }
     
     public void Graphics(Graphics g, int push_ToArr){
-        maxSamples = Integer.parseInt(samplesNumber);
+        maxSamples = nonTXT();
         
 
         
@@ -353,6 +355,7 @@ public class ModelFrame43 extends javax.swing.JFrame {
     
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        numberOfGraph = 3;
         pushToArr = 1;
         repaint();
         minRepaint();

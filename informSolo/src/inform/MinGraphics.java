@@ -31,10 +31,13 @@ import static inform.MainFrame.streamArray2;
 import static inform.MainFrame.supChannelsNames;
 import static inform.MainFrame.timeMaxGraphic;
 import static inform.MainFrame.timeMaxGraphicArray;
+import static inform.MainFrame.usage;
 import static inform.MaxGraphics.MaxGraphQueue;
 //import static inform.MaxGraphics.MaxSlider;
 import static inform.MaxGraphics.maxSliderValue;
 import static inform.MaxGraphics.topQueue;
+import static inform.UserMinMaxFrame.v1;
+import static inform.UserMinMaxFrame.v2;
 
 /**
  *
@@ -51,6 +54,10 @@ public class MinGraphics extends javax.swing.JInternalFrame implements MouseList
 
     public static int borderProp1X = 0;
     public static int borderProp2X = 100;
+    
+    public static int numberOfGraph = 0;
+    
+
     
     int topPadding = 31;
 
@@ -117,7 +124,8 @@ public class MinGraphics extends javax.swing.JInternalFrame implements MouseList
 
             //Названия каналов
             if(j > Integer.parseInt(channelsNumber)-1){
-                supChannelsNames[j - channelsNames.length] = "Model"+((j - channelsNames.length)+1);
+                //System.out.println("INDEXX - "+ (j - channelsNames.length));
+                supChannelsNames[j - channelsNames.length] = "Model_"+((j - channelsNames.length)+1);
                 g.drawString(supChannelsNames[j - channelsNames.length], 
                         (minGraphic.getWidth()-21) / 2, 
                         ((((minGraphic.getHeight() - 80) / calculateChannel()) * (j + 1))) + 31);
@@ -201,11 +209,20 @@ public class MinGraphics extends javax.swing.JInternalFrame implements MouseList
         if (minGraph == 1){
             //x1 = ((maxGraphic.getHeight()-151) / topQueue);
             //x1 = 100;
-            startI = (Integer.parseInt(samplesNumber) * borderProp1X / 100) + maxSliderValue;
-            endI = (Integer.parseInt(samplesNumber) * borderProp2X / 100) + maxSliderValue;
-            gstartI = startI;
-            gendI = endI;
-            
+            if (usage == 0){
+                startI = (Integer.parseInt(samplesNumber) * borderProp1X / 100) + maxSliderValue;
+                endI = (Integer.parseInt(samplesNumber) * borderProp2X / 100) + maxSliderValue;
+            }
+            else {
+                startI = v1;
+                endI = v2;
+            }
+
+            //startI = v1;
+            //endI = v2;
+            //gstartI = startI;
+            //gendI = endI;
+     
             System.out.println(gstartI + " !-! " + gendI);
             
             differI = endI - startI;
@@ -216,11 +233,14 @@ public class MinGraphics extends javax.swing.JInternalFrame implements MouseList
             startI = 1;
             endI = Integer.parseInt(samplesNumber)+1;
             differI = Integer.parseInt(samplesNumber)+1;
+            //startI = v1;
+            //endI = v2;
             //gstartI = startI;
             //gendI = endI;
         }
 
         //Находим максимальное и минимальное значение для текущего канала
+        try {
         if (zoom == 1){
             if(nnumberOfGraphic > Integer.parseInt(channelsNumber)-1){
                 for (int i = (int)startI; i < (int)endI; i++) {
@@ -244,6 +264,8 @@ public class MinGraphics extends javax.swing.JInternalFrame implements MouseList
         else {
             if(nnumberOfGraphic > Integer.parseInt(channelsNumber)-1){
                 for (int i = 0; i < Integer.parseInt(samplesNumber); i++) {
+                    //System.out.println("1)" + streamArray2[i][nnumberOfGraphic - Integer.parseInt(channelsNumber)]);
+                    //System.out.println("2)" + i + " = " + (nnumberOfGraphic - Integer.parseInt(channelsNumber)));
                     y2 = Double.parseDouble(streamArray2[i][nnumberOfGraphic - Integer.parseInt(channelsNumber)]);
                     max = MaxNumber(y2,max);
                     min = MinNumber(y2,min);
@@ -261,7 +283,10 @@ public class MinGraphics extends javax.swing.JInternalFrame implements MouseList
                 }
             }
         }
-
+        }
+        catch(NullPointerException e){
+            System.err.print("Вылет в мин");
+        }
         //Отнимаем общую часть
         max = max - min; 
 
@@ -333,7 +358,10 @@ public class MinGraphics extends javax.swing.JInternalFrame implements MouseList
             }
             else {
                 if (minGraph == 1){
+                    g.setColor(Color.MAGENTA);
                     g.drawLine((int)x1, (int)y1 + ((graphicHeight + 7) * numberInQueue) + 31 + marginTop, (int)x2, (int)y2 + ((graphicHeight + 7) * numberInQueue) + 31 + marginTop);
+                    g.setColor(Color.RED);
+                    g.fillOval((int)x1 - 4, (int)y1 + ((graphicHeight + 7) * numberInQueue) + 31 + marginTop - 4, 8, 8);
                 }
                 else {
                     g.drawLine((int)x1+12, (int)y1 + ((graphicHeight) * numberInQueue) + marginTop + 10, (int)x2+12, (int)y2 + ((graphicHeight) * numberInQueue) + marginTop + 10); 
@@ -538,11 +566,7 @@ public class MinGraphics extends javax.swing.JInternalFrame implements MouseList
             };
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
-        //хз куда запихать эту строчку jPopupMenu6.add("осцилограмма");
-        //чот совсем туплю. 
-        //System.out.println("НАЖАЛ");
-       //хз куда запихать эту строчку jPopupMenu6.add("осцилограмма");
-        //чот совсем туплю. 
+        usage = 0;
         if(test == 0) {
             
             JMenuItem osc = new JMenuItem("осцилограмма");
@@ -629,6 +653,7 @@ public class MinGraphics extends javax.swing.JInternalFrame implements MouseList
             }
             maxRepaint();
             borderProp2X = border2X * 100 / minGraphic.getWidth();
+            usage = 0;
             repaint();
             
             

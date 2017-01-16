@@ -7,6 +7,7 @@ package inform;
 
 
 import static inform.MainFrame.calculateTime;
+import static inform.MainFrame.channelsNames;
 import static inform.MainFrame.channelsNumber;
 import static inform.MainFrame.jDesktopPane1;
 import static inform.MainFrame.minGraphic;
@@ -18,10 +19,12 @@ import static inform.MainFrame.modelFrame3;
 import static inform.MainFrame.modelFrame4;
 import static inform.MainFrame.modelFrame7;
 import static inform.MainFrame.modelFrame9;
+import static inform.MainFrame.nonTXT;
 import static inform.MainFrame.samplesNumber;
 import static inform.MainFrame.samplingRate;
 import static inform.MainFrame.startTime;
 import static inform.MainFrame.streamArray2;
+import static inform.MainFrame.supChannelsNames;
 import static inform.MainFrame.suppArr;
 import static inform.MainFrame.thisTime;
 import static inform.MinGraphics.gendI;
@@ -144,18 +147,7 @@ public class ModelFrame51 extends javax.swing.JFrame {
     }
     
     public void Graphics(Graphics g, int push_ToArr){
-        if (samplesNumber == ""){
-            
-            maxSamples = 600;
-            //int intSamples = (int) maxSamples;
-            streamArray2 = new String [(int) maxSamples][50];
-            channelsNumber = "0";
-            jDesktopPane1.add(minGraphic);
-            minGraphic.show();
-        }
-        else {
-            maxSamples = Integer.parseInt(samplesNumber);
-        }
+        maxSamples = nonTXT();
 
         
         double minWidth = 60;
@@ -285,6 +277,7 @@ public class ModelFrame51 extends javax.swing.JFrame {
 
 
                 if (push_ToArr == 1){
+                    //System.out.println(" ------------------- 3)" + (suppArr-1));
                     streamArray2[i][suppArr-1] = String.valueOf(100 - y2);
                 }
                 
@@ -374,6 +367,7 @@ public class ModelFrame51 extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         SelectButton1 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         jPanel5.setBackground(new java.awt.Color(214, 214, 214));
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -635,6 +629,13 @@ public class ModelFrame51 extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setText("jButton5");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -651,6 +652,10 @@ public class ModelFrame51 extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(SelectButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton5)
+                .addGap(39, 39, 39))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -659,7 +664,9 @@ public class ModelFrame51 extends javax.swing.JFrame {
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addComponent(jButton5)
+                .addGap(33, 33, 33)
                 .addComponent(SelectButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -728,11 +735,17 @@ public class ModelFrame51 extends javax.swing.JFrame {
         repaint();
         minRepaint();
         suppArr++;
+        
+
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void TextField22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField22ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextField22ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     public int pushToArr = 0;
     
@@ -793,6 +806,7 @@ public class ModelFrame51 extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

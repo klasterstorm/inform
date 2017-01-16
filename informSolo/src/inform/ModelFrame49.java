@@ -7,6 +7,8 @@ package inform;
 
 
 import static inform.MainFrame.calculateTime;
+import static inform.MainFrame.channelsNames;
+import static inform.MainFrame.channelsNumber;
 import static inform.MainFrame.minGraphic;
 import static inform.MainFrame.modelFrame;
 import static inform.MainFrame.modelFrame2;
@@ -14,10 +16,12 @@ import static inform.MainFrame.modelFrame3;
 import static inform.MainFrame.modelFrame4;
 import static inform.MainFrame.modelFrame7;
 import static inform.MainFrame.modelFrame9;
+import static inform.MainFrame.nonTXT;
 import static inform.MainFrame.samplesNumber;
 import static inform.MainFrame.samplingRate;
 import static inform.MainFrame.startTime;
 import static inform.MainFrame.streamArray2;
+import static inform.MainFrame.supChannelsNames;
 import static inform.MainFrame.suppArr;
 import static inform.MainFrame.thisTime;
 import static inform.MinGraphics.gendI;
@@ -137,7 +141,7 @@ public class ModelFrame49 extends javax.swing.JFrame {
     }
     
     public void Graphics(Graphics g, int push_ToArr){
-        maxSamples = Integer.parseInt(samplesNumber);
+        maxSamples = nonTXT();
         
 
         

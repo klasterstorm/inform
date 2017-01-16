@@ -9,11 +9,13 @@ package inform;
 import static inform.MainFrame.minGraphic;
 import static inform.MainFrame.modelFrame;
 import static inform.MainFrame.modelFrame2;
+import static inform.MainFrame.nonTXT;
 import static inform.MainFrame.samplesNumber;
 import static inform.MainFrame.streamArray2;
 import static inform.MainFrame.suppArr;
 import static inform.MinGraphics.gendI;
 import static inform.MinGraphics.gstartI;
+import static inform.MinGraphics.numberOfGraph;
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -91,21 +93,7 @@ public class ModelFrame42 extends javax.swing.JFrame {
         g.drawLine(40, lline3, modelFrameWidth - (320 - 60), lline3);
         g.drawLine(40, lline4, modelFrameWidth - (320 - 60), lline4);
         
-        //Текст для горизонтальных полосок
-        
-        
-        
-        //min2 - минимальное для этих измерений
-        //max2 - максимальное
-        // (min2 + max2) / 2 = 0,5 - среднее между ними
-        //но чет меня факает
-        
-        
-        float avr = (1) / 2;
-        double ebota = (1) / 2;
-        
-        System.out.println(ebota + " 8======э " + avr);
-        
+
         g.setColor(Color.DARK_GRAY);
         g.drawString(String.valueOf(max2),20,81);
         g.drawString(String.valueOf(min2),20,lline1);
@@ -115,7 +103,7 @@ public class ModelFrame42 extends javax.swing.JFrame {
     }
     
     public void Graphics(Graphics g, int push_ToArr){
-        maxSamples = Integer.parseInt(samplesNumber);
+        maxSamples = nonTXT();
         
 
         
@@ -150,7 +138,7 @@ public class ModelFrame42 extends javax.swing.JFrame {
                 if(intImpuls < i) {
                     
                     if (push_ToArr == 1){
-                        streamArray2[i][suppArr-1] = String.valueOf(maxSamples-1);
+                        streamArray2[i][suppArr-1] = String.valueOf(maxSamples);
                     }
 
                     y2 = minHeight;
@@ -327,6 +315,7 @@ public class ModelFrame42 extends javax.swing.JFrame {
     
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        numberOfGraph = 2;
         pushToArr = 1;
         repaint();
         minRepaint();

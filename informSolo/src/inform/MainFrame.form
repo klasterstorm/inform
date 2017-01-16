@@ -168,6 +168,17 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem14ActionPerformed"/>
                   </Events>
                 </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem15">
+                  <Properties>
+                    <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                      <KeyStroke key="Meta+A"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="&#x421;&#x438;&#x433;&#x43d;&#x430;&#x43b;&#x430; &#x431;&#x435;&#x43b;&#x43e;&#x433;&#x43e; &#x448;&#x443;&#x43c;&#x430; &#x440;&#x430;&#x441;&#x43f;&#x440;&#x435;&#x434;&#x435;&#x43b;&#x435;&#x43d;&#x43d;&#x44b;&#x439; &#x43f;&#x43e; &#x43d;&#x43e;&#x440;&#x43c;&#x430;&#x43b;&#x44c;&#x43d;&#x43e;&#x43c;&#x443; &#x437;&#x430;&#x43a;&#x43e;&#x43d;&#x443;"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem15ActionPerformed"/>
+                  </Events>
+                </MenuItem>
               </SubComponents>
             </Menu>
           </SubComponents>

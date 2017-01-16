@@ -71,6 +71,7 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenu9 = new javax.swing.JMenu();
         jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
@@ -212,6 +213,15 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jMenu9.add(jMenuItem14);
+
+        jMenuItem15.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.META_MASK));
+        jMenuItem15.setText("Сигнала белого шума распределенный по нормальному закону");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem15ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem15);
 
         jMenu4.add(jMenu9);
 
@@ -476,6 +486,7 @@ public class MainFrame extends javax.swing.JFrame {
                 Random rand = new Random();
                 //streamArray2[i][j] = Integer.toString(rand.nextInt(990) + 1);
                 streamArray2[i][j] = Integer.toString(0);
+                
             }
         }
     }
@@ -654,6 +665,10 @@ public class MainFrame extends javax.swing.JFrame {
         modelFrame10.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+        modelFrame11.setVisible(true);
+    }//GEN-LAST:event_jMenuItem15ActionPerformed
+
     public static void WriteFile() throws IOException{
         FileNameExtensionFilter filter = new FileNameExtensionFilter("*.TXT","*.*");
         JFileChooser fc = new JFileChooser();
@@ -744,6 +759,7 @@ public class MainFrame extends javax.swing.JFrame {
     public static ModelFrame48 modelFrame8 = new ModelFrame48();
     public static ModelFrame49 modelFrame9 = new ModelFrame49();
     public static ModelFrame50 modelFrame10 = new ModelFrame50();
+    public static ModelFrame51 modelFrame11 = new ModelFrame51();
     public static SaveForm saveForm = new SaveForm();
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -785,6 +801,7 @@ public class MainFrame extends javax.swing.JFrame {
                 modelFrame8.setVisible(false);
                 modelFrame9.setVisible(false);
                 modelFrame10.setVisible(false);
+                modelFrame11.setVisible(false);
                 saveForm.setVisible(false);
             }
         });
@@ -812,6 +829,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

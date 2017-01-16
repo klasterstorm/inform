@@ -32,7 +32,7 @@ import static inform.MainFrame.supChannelsNames;
 import static inform.MainFrame.timeMaxGraphic;
 import static inform.MainFrame.timeMaxGraphicArray;
 import static inform.MaxGraphics.MaxGraphQueue;
-import static inform.MaxGraphics.MaxSlider;
+//import static inform.MaxGraphics.MaxSlider;
 import static inform.MaxGraphics.maxSliderValue;
 import static inform.MaxGraphics.topQueue;
 
@@ -583,7 +583,7 @@ public class MinGraphics extends javax.swing.JInternalFrame implements MouseList
         }
         repaint();
         borderProp1X = border1X * 100 / minGraphic.getWidth();
-        MaxSlider.setValue(0);
+//        MaxSlider.setValue(0);
         
         
 

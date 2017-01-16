@@ -7,9 +7,12 @@ package inform;
 
 
 import static inform.MainFrame.calculateTime;
+import static inform.MainFrame.channelsNumber;
+import static inform.MainFrame.jDesktopPane1;
 import static inform.MainFrame.minGraphic;
 import static inform.MainFrame.modelFrame;
 import static inform.MainFrame.modelFrame10;
+import static inform.MainFrame.modelFrame11;
 import static inform.MainFrame.modelFrame2;
 import static inform.MainFrame.modelFrame3;
 import static inform.MainFrame.modelFrame4;
@@ -34,14 +37,14 @@ import java.util.Random;
  *
  * @author KLASTER
  */
-public class ModelFrame50 extends javax.swing.JFrame {
+public class ModelFrame51 extends javax.swing.JFrame {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * Creates new form ModelFrame
      */
-    public ModelFrame50() {
+    public ModelFrame51() {
         initComponents();
 
     }
@@ -51,6 +54,7 @@ public class ModelFrame50 extends javax.swing.JFrame {
     
     public double aa = 0;
     public double bb = 100;
+    public double sigma = 1;
     
     public double a = 50;
     public double fo = 0.001;
@@ -58,7 +62,7 @@ public class ModelFrame50 extends javax.swing.JFrame {
     public double fi = 0.03;
     public double m = 1;
 
-
+    public double rnd[];
 
 
     
@@ -140,9 +144,18 @@ public class ModelFrame50 extends javax.swing.JFrame {
     }
     
     public void Graphics(Graphics g, int push_ToArr){
-        
-        maxSamples = Integer.parseInt(samplesNumber);
-        
+        if (samplesNumber == ""){
+            
+            maxSamples = 600;
+            //int intSamples = (int) maxSamples;
+            streamArray2 = new String [(int) maxSamples][50];
+            channelsNumber = "0";
+            jDesktopPane1.add(minGraphic);
+            minGraphic.show();
+        }
+        else {
+            maxSamples = Integer.parseInt(samplesNumber);
+        }
 
         
         double minWidth = 60;
@@ -164,10 +177,11 @@ public class ModelFrame50 extends javax.swing.JFrame {
         int maxProc = 222;
         int minProc = 222;
 
-        
+        double rand = n();
+        //System.out.println("RANDOM "+rand);
         //if (gstartI > -1){
             Label1.setText(0 + " < " + "a" + " < " + 1);
-            
+            rnd = new double [(int) maxSamples];
             //Находим максимум и минимум
             for(int n = 0; n < maxSamples; n++){
                 //System.out.println(startTime + " - " + samplingRate + " - " + thisTime("100"));
@@ -182,11 +196,12 @@ public class ModelFrame50 extends javax.swing.JFrame {
                 //t = Integer.parseInt(thisTime()) + ((n * Integer.parseInt(samplingRate)));
                 
                 
-                t = ((n * Integer.parseInt(samplingRate)));
+                //t = ((n * Integer.parseInt(samplingRate)));
                 
                 //ti = 200;
-                double value = aa + (bb - aa) * frand();
-                
+
+                double value = aa + sigma * n();
+                rnd[n] = value;
                 //System.out.println("VALUE ___ 1 " + a);
                 //System.out.println("VALUE ___ 2 " + Math.exp(-t / ti));
                 //System.out.println("VALUE ___ 3 " + Math.cos(Math.toRadians(360) * f * t + fi));
@@ -225,8 +240,9 @@ public class ModelFrame50 extends javax.swing.JFrame {
             
             
             for(int n = 0; n < maxSamples; n++){
-                t = ((n * Integer.parseInt(samplingRate)));
-                double value = aa + (bb - aa) * frand();
+                //t = ((n * Integer.parseInt(samplingRate)));
+                double value = rnd[n];
+                //System.out.println("value = " + aa + " + " + sigma + " * " + rand);
                 y2 = (((value * 100) / differValue));
                 
                 if (maxProc == 222){
@@ -257,12 +273,13 @@ public class ModelFrame50 extends javax.swing.JFrame {
                 
                 g.setColor(Color.MAGENTA);
 
-                t = ((i * Integer.parseInt(samplingRate)));
+                //t = ((i * Integer.parseInt(samplingRate)));
                 
-                double value = aa + (bb - aa) * frand();
+                double value = rnd[i];
 
                 y2 = (((value * 100) / differValue));
                 y2 = (maxProc) - y2;
+                //System.out.println("y2% "+y2);
                 y2 = ((y2 * maxHeight) / 100) + minHeight + 1;
 
 
@@ -296,11 +313,21 @@ public class ModelFrame50 extends javax.swing.JFrame {
         return numberAfterPoint((v / 10),3);
     }
     
+    public double n(){
+        double sum = 0;
+
+        for (int i = 1; i < 13; i++){
+            sum += frand() - 0.5;
+
+        }
+        return sum;
+    }
+    
     public void paint(Graphics g) {
-        modelFrameWidth = modelFrame10.getWidth();
-        modelFrameHeight = modelFrame10.getHeight();
+        modelFrameWidth = modelFrame11.getWidth();
+        modelFrameHeight = modelFrame11.getHeight();
         TextField11.setText(String.valueOf(aa));
-        TextField22.setText(String.valueOf(bb));
+        TextField22.setText(String.valueOf(sigma));
         //TextField33.setText(String.valueOf(fn));
         //TextField44.setText(String.valueOf(a));
         //TextField55.setText(String.valueOf(m));
@@ -525,7 +552,7 @@ public class ModelFrame50 extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Дискретизированная убывающая экспонента");
+        setTitle("Сигнала белого шума распределенный по нормальному закону");
         setAlwaysOnTop(true);
 
         jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -538,7 +565,7 @@ public class ModelFrame50 extends javax.swing.JFrame {
         });
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Конец интервала ( b )");
+        jLabel6.setText("Дисперсия ( σ )");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -571,7 +598,7 @@ public class ModelFrame50 extends javax.swing.JFrame {
         });
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Начала интервала ( a )");
+        jLabel7.setText("Среднее ( a )");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -689,7 +716,7 @@ public class ModelFrame50 extends javax.swing.JFrame {
     private void SelectButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectButton1ActionPerformed
         //System.out.println("RANDOM --- " + frand());
         aa = Double.parseDouble(TextField11.getText());
-        bb = Double.parseDouble(TextField22.getText());
+        sigma = Double.parseDouble(TextField22.getText());
         //fn = Double.parseDouble(TextField33.getText());
         //a = Double.parseDouble(TextField44.getText());
         //m = Double.parseDouble(TextField55.getText());
@@ -760,7 +787,7 @@ public class ModelFrame50 extends javax.swing.JFrame {
     public static javax.swing.JTextField TextField1;
     public static javax.swing.JTextField TextField11;
     public static javax.swing.JTextField TextField2;
-    private javax.swing.JTextField TextField22;
+    public static javax.swing.JTextField TextField22;
     public static javax.swing.JTextField TextField3;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

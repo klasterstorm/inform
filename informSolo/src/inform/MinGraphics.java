@@ -33,6 +33,7 @@ import static inform.MainFrame.timeMaxGraphic;
 import static inform.MainFrame.timeMaxGraphicArray;
 import static inform.MainFrame.usage;
 import static inform.MaxGraphics.MaxGraphQueue;
+import static inform.MaxGraphics.intSupportDot;
 //import static inform.MaxGraphics.MaxSlider;
 import static inform.MaxGraphics.maxSliderValue;
 import static inform.MaxGraphics.topQueue;
@@ -360,8 +361,10 @@ public class MinGraphics extends javax.swing.JInternalFrame implements MouseList
                 if (minGraph == 1){
                     g.setColor(Color.MAGENTA);
                     g.drawLine((int)x1, (int)y1 + ((graphicHeight + 7) * numberInQueue) + 31 + marginTop, (int)x2, (int)y2 + ((graphicHeight + 7) * numberInQueue) + 31 + marginTop);
-                    g.setColor(Color.RED);
-                    g.fillOval((int)x1 - 4, (int)y1 + ((graphicHeight + 7) * numberInQueue) + 31 + marginTop - 4, 8, 8);
+                    if (intSupportDot == 1){
+                        g.setColor(Color.RED);
+                        g.fillOval((int)x1 - 4, (int)y1 + ((graphicHeight + 7) * numberInQueue) + 31 + marginTop - 4, 8, 8);
+                    }
                 }
                 else {
                     g.drawLine((int)x1+12, (int)y1 + ((graphicHeight) * numberInQueue) + marginTop + 10, (int)x2+12, (int)y2 + ((graphicHeight) * numberInQueue) + marginTop + 10); 

@@ -519,7 +519,7 @@ public class ModelFrame47 extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Дискретизированная убывающая экспонента");
+        setTitle("Сигнал с экспоненциальной огибающей ");
         setAlwaysOnTop(true);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());

@@ -522,7 +522,7 @@ public class ModelFrame48 extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Сигнал с балансной огибающей\n");
+        setTitle("Сигнал с балансной огибающей ");
         setAlwaysOnTop(true);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());

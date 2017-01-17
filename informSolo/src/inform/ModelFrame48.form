@@ -290,7 +290,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="title" type="java.lang.String" value="&#x421;&#x438;&#x433;&#x43d;&#x430;&#x43b; &#x441; &#x431;&#x430;&#x43b;&#x430;&#x43d;&#x441;&#x43d;&#x43e;&#x439; &#x43e;&#x433;&#x438;&#x431;&#x430;&#x44e;&#x449;&#x435;&#x439;&#xa;"/>
+    <Property name="title" type="java.lang.String" value="&#x421;&#x438;&#x433;&#x43d;&#x430;&#x43b; &#x441; &#x431;&#x430;&#x43b;&#x430;&#x43d;&#x441;&#x43d;&#x43e;&#x439; &#x43e;&#x433;&#x438;&#x431;&#x430;&#x44e;&#x449;&#x435;&#x439; "/>
     <Property name="alwaysOnTop" type="boolean" value="true"/>
   </Properties>
   <SyntheticProperties>

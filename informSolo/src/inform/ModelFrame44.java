@@ -470,7 +470,7 @@ public class ModelFrame44 extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Дискретизированная убывающая экспонента");
+        setTitle("Дискретизированная синусоида с заданными амплитудой ");
         setAlwaysOnTop(true);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());

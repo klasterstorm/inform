@@ -40,6 +40,7 @@ public class MaxGraphics extends javax.swing.JInternalFrame {
     private static final long serialVersionUID = 1L;
     public static int zoomBool = 0;
     public static int intSupportLine = 1;
+    public static int intSupportDot = 0;
     
     
     public int maxLine1 = 0;
@@ -144,7 +145,6 @@ public class MaxGraphics extends javax.swing.JInternalFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         popUpMenu.setBackground(new java.awt.Color(51, 51, 255));
@@ -225,18 +225,6 @@ public class MaxGraphics extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(jButton1);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inform/2.png"))); // NOI18N
-        jButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton2);
-
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inform/3.png"))); // NOI18N
         jButton3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton3.setFocusable(false);
@@ -255,7 +243,7 @@ public class MaxGraphics extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(779, Short.MAX_VALUE))
+                .addContainerGap(796, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -417,7 +405,7 @@ public class MaxGraphics extends javax.swing.JInternalFrame {
             intSupportLine = 0;
         } else {
             jButton3.setBorder(emptyBorder);
-            jButton2.setBorder(emptyBorder);
+            //jButton2.setBorder(emptyBorder);
             jButton1.setBorder(lineBorder);
             jButton1Border = true;
             intSupportLine = 1;
@@ -428,34 +416,19 @@ public class MaxGraphics extends javax.swing.JInternalFrame {
         jButton3Border = false;
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Border emptyBorder = BorderFactory.createEmptyBorder(1, 1, 1, 1);
-        
-        if (jButton2Border == true){
-            jButton2.setBorder(emptyBorder);
-            jButton2Border = false;
-        } else {
-            jButton1.setBorder(emptyBorder);
-            jButton3.setBorder(emptyBorder);
-            jButton2.setBorder(new LineBorder(Color.BLACK));
-            jButton2Border = true;
-        }
-        
-        jButton1Border = false;
-        jButton3Border = false;
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Border emptyBorder = BorderFactory.createEmptyBorder(1, 1, 1, 1);
         
         if (jButton3Border == true){
             jButton3.setBorder(emptyBorder);
             jButton3Border = false;
+            intSupportDot = 1;
         } else {
             jButton1.setBorder(emptyBorder);
-            jButton2.setBorder(emptyBorder);
+            //jButton2.setBorder(emptyBorder);
             jButton3.setBorder(new LineBorder(Color.BLACK));
             jButton3Border = true;
+            intSupportDot = 0;
         }
         
         jButton2Border = false;
@@ -511,7 +484,6 @@ public class MaxGraphics extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;

@@ -245,7 +245,7 @@ public class ModelFrame46 extends javax.swing.JFrame {
         SelectButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Дискретизированная убывающая экспонента");
+        setTitle("“Пила” ");
         setAlwaysOnTop(true);
 
         jButton1.setText("Добавить к графикам");
@@ -474,7 +474,7 @@ public class ModelFrame46 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton SelectButton;
-    private javax.swing.JTextField TextField3;
+    public static javax.swing.JTextField TextField3;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

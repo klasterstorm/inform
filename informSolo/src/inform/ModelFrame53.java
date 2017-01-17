@@ -9,6 +9,7 @@ package inform;
 import static inform.MainFrame.minGraphic;
 import static inform.MainFrame.modelFrame13;
 import static inform.MainFrame.nonTXT;
+import static inform.MainFrame.samplesNumber;
 import static inform.MainFrame.streamArray;
 import static inform.MainFrame.streamArray2;
 import static inform.MainFrame.suppArr;
@@ -130,7 +131,7 @@ public class ModelFrame53 extends javax.swing.JFrame {
     }
     
     public void Graphics(Graphics g, int push_ToArr){
-        maxSamples = nonTXT();
+        maxSamples = Integer.parseInt(samplesNumber);
 
         
         double minWidth = 60;

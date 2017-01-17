@@ -6,33 +6,17 @@
 package inform;
 
 
-import static inform.MainFrame.calculateTime;
-import static inform.MainFrame.channelsNames;
-import static inform.MainFrame.channelsNumber;
 import static inform.MainFrame.minGraphic;
-import static inform.MainFrame.modelFrame;
 import static inform.MainFrame.modelFrame10;
-import static inform.MainFrame.modelFrame2;
-import static inform.MainFrame.modelFrame3;
-import static inform.MainFrame.modelFrame4;
-import static inform.MainFrame.modelFrame7;
-import static inform.MainFrame.modelFrame9;
 import static inform.MainFrame.nonTXT;
 import static inform.MainFrame.samplesNumber;
 import static inform.MainFrame.samplingRate;
-import static inform.MainFrame.startTime;
 import static inform.MainFrame.streamArray2;
-import static inform.MainFrame.supChannelsNames;
 import static inform.MainFrame.suppArr;
-import static inform.MainFrame.thisTime;
-import static inform.MinGraphics.gendI;
-import static inform.MinGraphics.gstartI;
 import java.awt.Color;
 import java.awt.Graphics;
-import static java.lang.Math.sin;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Random;
 
 /**
  *
@@ -144,7 +128,7 @@ public class ModelFrame50 extends javax.swing.JFrame {
     }
     
     public void Graphics(Graphics g, int push_ToArr){
-        maxSamples = nonTXT();
+        maxSamples = Integer.parseInt(samplesNumber);
 
         
 
@@ -530,7 +514,7 @@ public class ModelFrame50 extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Дискретизированная убывающая экспонента");
+        setTitle("Сигнала белого шума,  равномерно распределенного в интервале [a,b]");
         setAlwaysOnTop(true);
 
         jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -765,7 +749,7 @@ public class ModelFrame50 extends javax.swing.JFrame {
     public static javax.swing.JTextField TextField1;
     public static javax.swing.JTextField TextField11;
     public static javax.swing.JTextField TextField2;
-    private javax.swing.JTextField TextField22;
+    public static javax.swing.JTextField TextField22;
     public static javax.swing.JTextField TextField3;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

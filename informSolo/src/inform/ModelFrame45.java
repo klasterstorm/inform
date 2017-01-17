@@ -123,7 +123,7 @@ public class ModelFrame45 extends javax.swing.JFrame {
     }
     
     public void Graphics(Graphics g, int push_ToArr){
-        maxSamples = nonTXT();
+        maxSamples = Integer.parseInt(samplesNumber);
         
 
         
@@ -470,6 +470,7 @@ public class ModelFrame45 extends javax.swing.JFrame {
         jPanel8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         TextField33.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TextField33.setText("200");
         TextField33.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField33ActionPerformed(evt);

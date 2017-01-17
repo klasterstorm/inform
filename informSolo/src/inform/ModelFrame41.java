@@ -12,6 +12,7 @@ import static inform.MainFrame.nonTXT;
 import static inform.MainFrame.samplesNumber;
 import static inform.MainFrame.streamArray2;
 import static inform.MainFrame.suppArr;
+import static inform.MainFrame.usersInfo;
 import static inform.MinGraphics.gendI;
 import static inform.MinGraphics.gstartI;
 import static inform.MinGraphics.numberOfGraph;
@@ -107,7 +108,7 @@ public class ModelFrame41 extends javax.swing.JFrame {
     }
     
     public void Graphics(Graphics g, int push_ToArr){
-        maxSamples = nonTXT();
+        maxSamples = Integer.parseInt(samplesNumber);
         
 
         
@@ -354,7 +355,8 @@ public class ModelFrame41 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModelFrame41().setVisible(true);
+
+                    new ModelFrame41().setVisible(true);
             }
         });
     }

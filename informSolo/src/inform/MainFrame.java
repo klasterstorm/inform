@@ -57,6 +57,9 @@ public class MainFrame extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem13 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -72,18 +75,14 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu9 = new javax.swing.JMenu();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
+        jMenuItem18 = new javax.swing.JMenuItem();
         jMenuItem17 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem16 = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu11 = new javax.swing.JMenu();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
@@ -109,10 +108,31 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Рабочая область");
+        setTitle("DSP - Bayan");
         setBounds(new java.awt.Rectangle(0, 0, 1280, 720));
-        setMinimumSize(new java.awt.Dimension(2000, 1000));
+        setMaximumSize(new java.awt.Dimension(2000, 1000));
+        setMinimumSize(new java.awt.Dimension(200, 100));
         setSize(new java.awt.Dimension(1280, 720));
+
+        jMenu1.setText("Файл");
+
+        jMenuItem1.setText("Открыть файл");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem13.setText("Сохранить файл");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem13);
+
+        jMenuBar1.add(jMenu1);
 
         jMenu4.setText("Моделирование");
 
@@ -225,6 +245,15 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jMenu9.add(jMenuItem15);
 
+        jMenuItem18.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.META_MASK));
+        jMenuItem18.setText("Cлучайного сигнал авторегрессии-скользящего среднего порядка (p,q) ");
+        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem18ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem18);
+
         jMenuItem17.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.META_MASK));
         jMenuItem17.setText("Суперпозиция");
         jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
@@ -237,46 +266,6 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu4.add(jMenu9);
 
         jMenuBar1.add(jMenu4);
-
-        jMenu1.setText("Файл");
-
-        jMenuItem1.setText("Открыть файл");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem13.setText("Сохранить файл");
-        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem13ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem13);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Инструменты");
-
-        jMenuItem2.setText("Информация о сигнале");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem2);
-
-        jMenuItem3.setText("Ввести min-max");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem3);
-
-        jMenuBar1.add(jMenu2);
 
         jMenu5.setText("Фильтрация");
         jMenuBar1.add(jMenu5);
@@ -298,6 +287,14 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuBar1.add(jMenu7);
 
         jMenu10.setText("Справка");
+
+        jMenuItem2.setText("Информация о сигнале");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu10.add(jMenuItem2);
 
         jMenu11.setText("О авторах");
         jMenu11.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -339,6 +336,7 @@ public class MainFrame extends javax.swing.JFrame {
     public static String channelsNumber = "";
     //Кол-во строк в файле(+12 для описания файла)
     public static String samplesNumber = "";
+    public static String userSamplesNumber = "";
     //Какая-то хурма, пусть тут валяется, мб пригодится.
     public static String samplingRate = "";
     //Старт измерения(дата)
@@ -515,13 +513,14 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }
     
+    
 
 
-    public static int nonTXT(){
-        if (samplesNumber == ""){
+    public static void nonTXT(String sample){
+        //if (samplesNumber == ""){
             
-            samplesNumber = "600";
-
+            samplesNumber = sample;
+            System.out.println("NON TXT "+samplesNumber);
             //int intSamples = (int) maxSamples;
             streamArray2 = new String [Integer.parseInt(samplesNumber)][50];
             channelsNumber = "0";
@@ -530,8 +529,7 @@ public class MainFrame extends javax.swing.JFrame {
             samplingRate = "1";
             startTime = "10:00:00.000";
             startDate = "01-01-2000";
-        }
-        return Integer.parseInt(samplesNumber);
+        //}
     }
 
     public static Date date = null;
@@ -659,44 +657,85 @@ public class MainFrame extends javax.swing.JFrame {
         setTextToTextField("\nБаян Евгений\n\n\n\n\n\n\n\nБ8319а, 2016-2017 год",widht, height);
     }//GEN-LAST:event_jMenu11MouseClicked
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        userMinMaxFrame.setVisible(true);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        modelFrame.setVisible(true);
+        if (samplesNumber == ""){
+            usersInfo.setVisible(true);
+        }
+        else{
+            modelFrame.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        modelFrame2.setVisible(true);
+        if (samplesNumber == ""){
+            usersInfo.setVisible(true);
+        }
+        else{
+            modelFrame2.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        modelFrame3.setVisible(true);
+        if (samplesNumber == ""){
+            usersInfo.setVisible(true);
+        }
+        else{
+            modelFrame3.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        modelFrame4.setVisible(true);
+        if (samplesNumber == ""){
+            usersInfo.setVisible(true);
+        }
+        else{
+            modelFrame4.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        modelFrame5.setVisible(true);
+        if (samplesNumber == ""){
+            usersInfo.setVisible(true);
+        }
+        else{        
+            modelFrame5.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        modelFrame6.setVisible(true);
+        if (samplesNumber == ""){
+            usersInfo.setVisible(true);
+        }
+        else{
+            modelFrame6.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        modelFrame7.setVisible(true);
+        if (samplesNumber == ""){
+            usersInfo.setVisible(true);
+        }
+        else{
+            modelFrame7.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        modelFrame8.setVisible(true);
+        if (samplesNumber == ""){
+            usersInfo.setVisible(true);
+        }
+        else{
+            modelFrame8.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-        modelFrame9.setVisible(true);
+        if (samplesNumber == ""){
+            usersInfo.setVisible(true);
+        }
+        else{
+            modelFrame9.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
@@ -704,11 +743,21 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
-        modelFrame10.setVisible(true);
+        if (samplesNumber == ""){
+            usersInfo.setVisible(true);
+        }
+        else{
+            modelFrame10.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
-        modelFrame11.setVisible(true);
+        if (samplesNumber == ""){
+            usersInfo.setVisible(true);
+        }
+        else{
+            modelFrame11.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
@@ -719,6 +768,15 @@ public class MainFrame extends javax.swing.JFrame {
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         checkSuperPosForm.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
+
+    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
+        if (samplesNumber == ""){
+            usersInfo.setVisible(true);
+        }
+        else{
+            modelFrame12.setVisible(true);
+        }
+    }//GEN-LAST:event_jMenuItem18ActionPerformed
 
     public static void WriteFile() throws IOException{
         FileNameExtensionFilter filter = new FileNameExtensionFilter("*.TXT","*.*");
@@ -798,6 +856,7 @@ public class MainFrame extends javax.swing.JFrame {
     
     public static Frame autorsFrame = new TextFrame();
     public static Frame userMinMaxFrame = new UserMinMaxFrame();
+    public static UsersInfo usersInfo = new UsersInfo();
     
     public static SuperPosText superPosText = new SuperPosText();
     public static SuperPosText2 superPosText2 = new SuperPosText2();
@@ -816,6 +875,7 @@ public class MainFrame extends javax.swing.JFrame {
     public static ModelFrame49 modelFrame9 = new ModelFrame49();
     public static ModelFrame50 modelFrame10 = new ModelFrame50();
     public static ModelFrame51 modelFrame11 = new ModelFrame51();
+    public static ModelFrame52 modelFrame12 = new ModelFrame52();
     public static ModelFrame53 modelFrame13 = new ModelFrame53();
     public static ModelFrame54 modelFrame14 = new ModelFrame54();
     
@@ -876,7 +936,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
@@ -894,8 +953,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
+    private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;

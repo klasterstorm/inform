@@ -153,7 +153,7 @@ public class ModelFrame54 extends javax.swing.JFrame {
     }
     
     public void Graphics(Graphics g, int push_ToArr){
-        maxSamples = nonTXT();
+
 
         
         double minWidth = 60;

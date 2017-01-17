@@ -11,6 +11,7 @@ import static inform.MainFrame.samplesNumber;
 import static inform.MainFrame.saveForm;
 import static inform.MainFrame.supChannelsNames;
 import static inform.MainFrame.superPosText;
+import static inform.MainFrame.superPosText2;
 import static inform.MainFrame.suppArr;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -445,7 +446,8 @@ public class SuperPosForm extends javax.swing.JFrame {
     }//GEN-LAST:event_JSUMActionPerformed
 
     private void JUMNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JUMNActionPerformed
-        // TODO add your handling code here:
+        finalCheck();
+        superPosText2.setVisible(true);
     }//GEN-LAST:event_JUMNActionPerformed
 
     /**

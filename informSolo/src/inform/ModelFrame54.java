@@ -6,31 +6,54 @@
 package inform;
 
 
+import static inform.MainFrame.calculateTime;
+import static inform.MainFrame.channelsNames;
+import static inform.MainFrame.channelsNumber;
+import static inform.MainFrame.jDesktopPane1;
 import static inform.MainFrame.minGraphic;
+import static inform.MainFrame.modelFrame;
+import static inform.MainFrame.modelFrame10;
+import static inform.MainFrame.modelFrame11;
 import static inform.MainFrame.modelFrame13;
+import static inform.MainFrame.modelFrame14;
+import static inform.MainFrame.modelFrame2;
+import static inform.MainFrame.modelFrame3;
+import static inform.MainFrame.modelFrame4;
+import static inform.MainFrame.modelFrame7;
+import static inform.MainFrame.modelFrame9;
 import static inform.MainFrame.nonTXT;
+import static inform.MainFrame.samplesNumber;
+import static inform.MainFrame.samplingRate;
+import static inform.MainFrame.startTime;
 import static inform.MainFrame.streamArray;
 import static inform.MainFrame.streamArray2;
+import static inform.MainFrame.supChannelsNames;
 import static inform.MainFrame.suppArr;
+import static inform.MainFrame.thisTime;
+import static inform.MinGraphics.gendI;
+import static inform.MinGraphics.gstartI;
 import static inform.SuperPosForm.superPosFormArr;
 import static inform.SuperPosText.superPosArrSUM;
+import static inform.SuperPosText2.a0;
 import java.awt.Color;
 import java.awt.Graphics;
+import static java.lang.Math.sin;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Random;
 
 /**
  *
  * @author KLASTER
  */
-public class ModelFrame53 extends javax.swing.JFrame {
+public class ModelFrame54 extends javax.swing.JFrame {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * Creates new form ModelFrame
      */
-    public ModelFrame53() {
+    public ModelFrame54() {
         initComponents();
 
     }
@@ -153,21 +176,21 @@ public class ModelFrame53 extends javax.swing.JFrame {
         int minProc = 222;
 
 
-            Label1.setText(0 + " < " + "a" + " < " + 1);
+
             rnd = new double [(int) maxSamples];
-            //Находим максимум и минимум
+
             for(int n = 0; n < maxSamples; n++){
                 
-                double value = 0;
+                double value = 1;
                     for (int i = 0; i < superPosFormArr.length - 1; i++){
                         if (superPosFormArr[i] == true){
-                            //System.out.println(i + ") " + value + " + (" + superPosArrSUM[i] + " * " + Double.parseDouble(streamArray[n][i]) + ")");
-                            value = value + (superPosArrSUM[i] * Double.parseDouble(streamArray[n][i]));
+                            //System.out.println(i + ") " + value + " * " + Double.parseDouble(streamArray[n][i]));
+                            value = value * Double.parseDouble(streamArray[n][i]);
                             //System.out.println(i + ") " + value);
                         }
                     }
 
-                value += superPosArrSUM[19];
+                value = value * a0;
                 //System.out.println(n + ") " + value);
                 rnd[n] = value;
 
@@ -230,7 +253,7 @@ public class ModelFrame53 extends javax.swing.JFrame {
                 }
             }
             
-            //System.out.println("MAX - MIN %%% " + maxProc + " ___" + minProc);
+            System.out.println("MAX - MIN %%% " + maxProc + " ___" + minProc);
             
             for(int i = 0; i < maxSamples; i++){
                 x2 = Math.ceil(((width / maxSamples) * i) + minWidth);
@@ -276,10 +299,8 @@ public class ModelFrame53 extends javax.swing.JFrame {
 
     
     public void paint(Graphics g) {
-        modelFrameWidth = modelFrame13.getWidth();
-        modelFrameHeight = modelFrame13.getHeight();
-        //TextField11.setText(String.valueOf(aa));
-        //TextField22.setText(String.valueOf(sigma));
+        modelFrameWidth = modelFrame14.getWidth();
+        modelFrameHeight = modelFrame14.getHeight();
 
 
         super.paint(g);

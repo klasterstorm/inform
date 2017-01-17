@@ -399,40 +399,27 @@ public class MaxGraphics extends javax.swing.JInternalFrame {
         Border emptyBorder = BorderFactory.createEmptyBorder(1, 1, 1, 1);
         Border lineBorder = BorderFactory.createLineBorder(Color.BLACK);
         
-        if (jButton1Border == true){
+        if (intSupportLine == 1){
             jButton1.setBorder(emptyBorder);
-            jButton1Border = false;
             intSupportLine = 0;
         } else {
-            jButton3.setBorder(emptyBorder);
-            //jButton2.setBorder(emptyBorder);
             jButton1.setBorder(lineBorder);
-            jButton1Border = true;
             intSupportLine = 1;
         }
         repaint();
-        
-        jButton2Border = false;
-        jButton3Border = false;
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Border emptyBorder = BorderFactory.createEmptyBorder(1, 1, 1, 1);
         
-        if (jButton3Border == true){
+        if (intSupportDot == 1){
             jButton3.setBorder(emptyBorder);
-            jButton3Border = false;
-            intSupportDot = 1;
-        } else {
-            jButton1.setBorder(emptyBorder);
-            //jButton2.setBorder(emptyBorder);
-            jButton3.setBorder(new LineBorder(Color.BLACK));
-            jButton3Border = true;
             intSupportDot = 0;
+        } else {
+            jButton3.setBorder(new LineBorder(Color.BLACK));
+            intSupportDot = 1;
         }
-        
-        jButton2Border = false;
-        jButton1Border = false;
+        repaint();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased

@@ -798,7 +798,9 @@ public class MainFrame extends javax.swing.JFrame {
     
     public static Frame autorsFrame = new TextFrame();
     public static Frame userMinMaxFrame = new UserMinMaxFrame();
+    
     public static SuperPosText superPosText = new SuperPosText();
+    public static SuperPosText2 superPosText2 = new SuperPosText2();
     
     public static MinGraphics minGraphic = new MinGraphics();
     public static MaxGraphics maxGraphic = new MaxGraphics();
@@ -815,6 +817,7 @@ public class MainFrame extends javax.swing.JFrame {
     public static ModelFrame50 modelFrame10 = new ModelFrame50();
     public static ModelFrame51 modelFrame11 = new ModelFrame51();
     public static ModelFrame53 modelFrame13 = new ModelFrame53();
+    public static ModelFrame54 modelFrame14 = new ModelFrame54();
     
     public static SaveForm saveForm = new SaveForm();
     public static SuperPosForm checkSuperPosForm = new SuperPosForm();  

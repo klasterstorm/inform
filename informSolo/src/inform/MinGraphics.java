@@ -494,7 +494,7 @@ public class MinGraphics extends javax.swing.JInternalFrame implements MouseList
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Превью графиков");
+        setTitle("Каналы");
         setAlignmentX(0.1F);
         setAlignmentY(0.1F);
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {

@@ -72,6 +72,7 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu9 = new javax.swing.JMenu();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
+        jMenuItem17 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
@@ -223,6 +224,15 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jMenu9.add(jMenuItem15);
+
+        jMenuItem17.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.META_MASK));
+        jMenuItem17.setText("Суперпозиция");
+        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem17ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem17);
 
         jMenu4.add(jMenu9);
 
@@ -706,6 +716,10 @@ public class MainFrame extends javax.swing.JFrame {
         minGraphic.show();
     }//GEN-LAST:event_jMenuItem16ActionPerformed
 
+    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+        checkSuperPosForm.setVisible(true);
+    }//GEN-LAST:event_jMenuItem17ActionPerformed
+
     public static void WriteFile() throws IOException{
         FileNameExtensionFilter filter = new FileNameExtensionFilter("*.TXT","*.*");
         JFileChooser fc = new JFileChooser();
@@ -784,8 +798,11 @@ public class MainFrame extends javax.swing.JFrame {
     
     public static Frame autorsFrame = new TextFrame();
     public static Frame userMinMaxFrame = new UserMinMaxFrame();
+    public static SuperPosText superPosText = new SuperPosText();
+    
     public static MinGraphics minGraphic = new MinGraphics();
     public static MaxGraphics maxGraphic = new MaxGraphics();
+    
     public static ModelFrame41 modelFrame = new ModelFrame41();
     public static ModelFrame42 modelFrame2 = new ModelFrame42();
     public static ModelFrame43 modelFrame3 = new ModelFrame43();
@@ -797,7 +814,10 @@ public class MainFrame extends javax.swing.JFrame {
     public static ModelFrame49 modelFrame9 = new ModelFrame49();
     public static ModelFrame50 modelFrame10 = new ModelFrame50();
     public static ModelFrame51 modelFrame11 = new ModelFrame51();
+    public static ModelFrame53 modelFrame13 = new ModelFrame53();
+    
     public static SaveForm saveForm = new SaveForm();
+    public static SuperPosForm checkSuperPosForm = new SuperPosForm();  
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -839,7 +859,9 @@ public class MainFrame extends javax.swing.JFrame {
                 modelFrame9.setVisible(false);
                 modelFrame10.setVisible(false);
                 modelFrame11.setVisible(false);
+                modelFrame13.setVisible(false);
                 saveForm.setVisible(false);
+                superPosText.setVisible(false);
             }
         });
     }
@@ -868,6 +890,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

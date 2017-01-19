@@ -49,8 +49,8 @@ public class ModelFrame52 extends javax.swing.JFrame {
     public double fi = 0.03;
     public double m = 1;
 
-    public double rnd[];
-
+    public double[] yyArr;
+    public double[] xxRnd = new double [1000000];
 
     public static String a[] = new String[100];
     public static String b[] = new String[100];
@@ -157,33 +157,10 @@ public class ModelFrame52 extends javax.swing.JFrame {
         //System.out.println("RANDOM "+rand);
         //if (gstartI > -1){
             Label1.setText(0 + " < " + "a" + " < " + 1);
-            rnd = new double [(int) maxSamples];
+            yyArr = new double [(int) maxSamples];
             //Находим максимум и минимум
             for(int n = 0; n < maxSamples; n++){
 
-
-                
-//                a[1] = "-4.167";
-//                a[2] = "7.940";
-//                a[3] = "-9.397";
-//                a[4] = "7.515";
-//                a[5] = "-3.752";
-//                a[6] = "0.862";
-//                a[7] = "0.62";  
-//                a[8] = "-2.34";
-//                a[9] = "2.733";
-//                a[10] = "-2.148";
-//                
-//                b[1] = "-2.28";
-//                b[2] = "1.77";
-//                b[3] = "-0.472";
-//                b[4] = "1.613";
-//                b[5] = "0.787";
-//                b[6] = "-2.28";
-//                b[7] = "2.77";
-//                b[8] = "-1.972";
-//                b[9] = "0.6";
-//                b[10] = "0.9";
  
                 a = JA.getText().split(";");
                 b = JB.getText().split(";");
@@ -194,28 +171,53 @@ public class ModelFrame52 extends javax.swing.JFrame {
                 double value = 0;
                 double aa = 0;
                 double bb = 0;
+                aa = 0;
+                bb = 0;
                 
-                if (q > a.length - 1) {
-                    q = a.length - 1;
-                }
-                if (p > b.length - 1){
-                    p = b.length - 1;
-                }
-                
-                for (int i = 1; i <= q; i++){
-                    aa += Double.parseDouble(a[i]) * n();
-                }
-                
-                for (int j = 1; j <= p; j++){
-                    bb += Double.parseDouble(b[j]) * n();
-                }
-                
-                value = n() + aa - bb;
-                
-                
-                
-                rnd[n] = value;
 
+                xxRnd[n] = n();
+                
+
+                
+                for (int i = 1; i <= a.length - 1; i++){
+                    aa += Double.parseDouble(a[i]) * yy(n - i);
+                }
+                
+                for (int j = 1; j <= b.length - 1; j++){
+                    bb += Double.parseDouble(b[j]) * xx(n - j);
+                }
+                
+
+                yyArr[n] = xx(n) + bb - aa;
+
+                //System.out.println(value + " ----- " + xx(n) + " + " + bb + " - " + aa);
+                
+
+
+                
+//                public double yy(int n){
+//                    if (n <= 0){
+//                        return 0;
+//                    }
+//                    else {
+//                        return yyArr[n];
+//                    }
+//                }
+//    
+//                public double xx(int n){
+//                    if (n <= 0){
+//                        return n();
+//                    }
+//                    else {
+//                        return xxRnd[n];
+//                    }
+//                }
+                
+                
+                
+                
+                
+                
                 
                 if (maxValue == 11511){
                     maxValue = value;
@@ -250,7 +252,7 @@ public class ModelFrame52 extends javax.swing.JFrame {
             
             for(int n = 0; n < maxSamples; n++){
                 //t = ((n * Integer.parseInt(samplingRate)));
-                double value = rnd[n];
+                double value = yyArr[n];
                 //System.out.println("value = " + aa + " + " + sigma + " * " + rand);
                 y2 = (((value * 100) / differValue));
                 
@@ -284,7 +286,7 @@ public class ModelFrame52 extends javax.swing.JFrame {
 
                 //t = ((i * Integer.parseInt(samplingRate)));
                 
-                double value = rnd[i];
+                double value = yyArr[i];
 
                 y2 = (((value * 100) / differValue));
                 y2 = (maxProc) - y2;
@@ -319,8 +321,8 @@ public class ModelFrame52 extends javax.swing.JFrame {
     }
 
     public double frand(){
-        double v = Math.random() * 10 + 1;
-        return numberAfterPoint((v / 10),3);
+        double v = Math.random() * 1000000000 + 1;
+        return numberAfterPoint((v / 1000000000),3);
     }
     
     public double n(){
@@ -331,6 +333,24 @@ public class ModelFrame52 extends javax.swing.JFrame {
 
         }
         return sum;
+    }
+    
+    public double yy(int n){
+        if (n <= 0){
+            return 0;
+        }
+        else {
+            return yyArr[n];
+        }
+    }
+    
+    public double xx(int n){
+        if (n <= 0){
+            return n();
+        }
+        else {
+            return xxRnd[n];
+        }
     }
     
     public void paint(Graphics g) {
@@ -661,14 +681,14 @@ public class ModelFrame52 extends javax.swing.JFrame {
         JA.setLineWrap(true);
         JA.setRows(3);
         JA.setTabSize(5);
-        JA.setText("1.167;7.940;-9.397;7.515;-3.752;0.862;-2.34;2.733;-2.148;0.863");
+        JA.setText("-2.34;2.733;-2.148;0.863");
         jScrollPane1.setViewportView(JA);
 
         JB.setColumns(20);
         JB.setLineWrap(true);
         JB.setRows(3);
         JB.setTabSize(5);
-        JB.setText("-1.7;3.0;-5.7;2.5;-3.752;3.862;-2.28;1.77;-0.472");
+        JB.setText("-1.12;0.592");
         jScrollPane2.setViewportView(JB);
 
         jLabel5.setText("a");

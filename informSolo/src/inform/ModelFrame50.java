@@ -158,21 +158,7 @@ public class ModelFrame50 extends javax.swing.JFrame {
             
             //Находим максимум и минимум
             for(int n = 0; n < maxSamples; n++){
-                //System.out.println(startTime + " - " + samplingRate + " - " + thisTime("100"));
 
-                //t = Integer.parseInt(thisTime()) + ((n * Integer.parseInt(samplingRate)));
-                //n = StartTime;
-                //System.out.println(n + " - " + t);
-                
-                //double value = a * sin(n * Math.toRadians(ti) + Math.toRadians(fi));
-                
-                // Текущее время + (Номер отсчета * частота дискретизации)
-                //t = Integer.parseInt(thisTime()) + ((n * Integer.parseInt(samplingRate)));
-                
-                
-                t = ((n * Integer.parseInt(samplingRate)));
-                
-                //ti = 200;
                 double value = aa + (bb - aa) * frand();
                 
                 //System.out.println("VALUE ___ 1 " + a);
@@ -210,10 +196,11 @@ public class ModelFrame50 extends javax.swing.JFrame {
             double differValue = maxValue - minValue;
 
             System.out.println("DIFFER_ABS " + differValue);
-            
+            //minValue = minValue - 10;
+            //maxValue = maxValue - 10;
             
             for(int n = 0; n < maxSamples; n++){
-                t = ((n * Integer.parseInt(samplingRate)));
+                //t = ((n * Integer.parseInt(samplingRate)));
                 double value = aa + (bb - aa) * frand();
                 y2 = (((value * 100) / differValue));
                 
@@ -245,7 +232,7 @@ public class ModelFrame50 extends javax.swing.JFrame {
                 
                 g.setColor(Color.MAGENTA);
 
-                t = ((i * Integer.parseInt(samplingRate)));
+                //t = ((i * Integer.parseInt(samplingRate)));
                 
                 double value = aa + (bb - aa) * frand();
 
@@ -281,8 +268,8 @@ public class ModelFrame50 extends javax.swing.JFrame {
     }
 
     public double frand(){
-        double v = Math.random() * 10 + 1;
-        return numberAfterPoint((v / 10),3);
+        double v = Math.random() * 1000000000 + 1;
+        return numberAfterPoint((v / 1000000000),3);
     }
     
     public void paint(Graphics g) {
